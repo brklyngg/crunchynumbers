@@ -27,6 +27,36 @@ export default function FriendlyGLAgent() {
         </div>
       </div>
       
+      {/* Intuit Required URLs Section */}
+      <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 mb-8">
+        <h2 className="text-xl font-semibold mb-4">Intuit Integration URLs</h2>
+        <p className="text-gray-700 mb-4">
+          The following URLs are used for Intuit Developer App Store integration:
+        </p>
+        
+        <div className="space-y-3 mt-4">
+          <div>
+            <h3 className="font-medium">Launch URL:</h3>
+            <p className="text-blue-600">https://crunchy.tools/friendly-gl-agent/launch</p>
+          </div>
+          
+          <div>
+            <h3 className="font-medium">Disconnect URL:</h3>
+            <p className="text-blue-600">https://crunchy.tools/friendly-gl-agent/disconnect</p>
+          </div>
+          
+          <div>
+            <h3 className="font-medium">End-User License Agreement (EULA):</h3>
+            <p className="text-blue-600">https://crunchy.tools/friendly-gl-agent/terms</p>
+          </div>
+          
+          <div>
+            <h3 className="font-medium">Privacy Policy:</h3>
+            <p className="text-blue-600">https://crunchy.tools/privacy-policy</p>
+          </div>
+        </div>
+      </div>
+      
       <div className="text-sm text-gray-600">
         <p className="mb-2">
           By using this tool, you agree to our{" "}
