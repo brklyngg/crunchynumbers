@@ -55,7 +55,10 @@ export default function PrivacyPolicy() {
           
           <h2 className="text-2xl font-semibold mt-8 mb-6">Contact Us</h2>
           <p className="mb-6">
-            If you have any questions about this Privacy Policy, please contact us at privacy@crunchynumbers.example.com.
+            If you have any questions about this Privacy Policy, please contact us at{" "}
+            <a href="mailto:privacy@crunchynumbers.example.com" className="text-blue-600 hover:underline">
+              privacy@crunchynumbers.example.com
+            </a>.
           </p>
         </div>
       </div>

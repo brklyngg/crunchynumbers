@@ -28,8 +28,8 @@ export default function Terms() {
           
           <h3 className="text-xl font-medium mt-8 mb-4">3. Data Privacy</h3>
           <p className="mb-6">
-            Your use of the Software is also governed by our Privacy Policy, which can be found at 
-            <Link href="/privacy-policy" className="text-blue-600 hover:underline ml-2">
+            Your use of the Software is also governed by our Privacy Policy, which can be found at{" "}
+            <Link href="/privacy-policy" className="text-blue-600 hover:underline">
               Privacy Policy
             </Link>.
           </p>

@@ -20,11 +20,12 @@ export default function Launch() {
           </ul>
         </div>
         
-        <button 
-          className="px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors text-lg font-medium"
+        <a 
+          href="/api/connect-accounting"
+          className="inline-block px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors text-lg font-medium"
         >
           Connect your GL data
-        </button>
+        </a>
       </div>
       
       <div className="mt-8">
