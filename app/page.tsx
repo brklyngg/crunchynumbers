@@ -18,10 +18,6 @@ export default function Home() {
       </div>
       
       <div className="mt-8 max-w-xl text-center">
-        <p className="text-gray-800 text-lg">
-          Simplify your financial workflows with our specialized tools built for finance professionals.
-        </p>
-        
         <div className="mt-8">
           <Link 
             href="/friendly-gl-agent" 
