@@ -4,8 +4,8 @@ import Link from "next/link";
 export default function Home() {
   return (
     <div className="flex flex-col items-center gap-8 py-10">
-      <h1 className="text-4xl font-bold">Crunchy Numbers</h1>
-      <h2 className="text-xl text-gray-600">Niche tools for finance & operations leaders</h2>
+      <h1 className="text-4xl font-bold text-gray-900">Crunchy Numbers</h1>
+      <h2 className="text-xl text-gray-700">Niche tools for finance & operations leaders</h2>
       
       <div className="mt-6">
         <Image 
@@ -18,14 +18,14 @@ export default function Home() {
       </div>
       
       <div className="mt-8 max-w-xl text-center">
-        <p className="text-gray-700">
+        <p className="text-gray-800 text-lg">
           Simplify your financial workflows with our specialized tools built for finance professionals.
         </p>
         
         <div className="mt-8">
           <Link 
             href="/friendly-gl-agent" 
-            className="px-5 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+            className="px-6 py-4 bg-blue-700 text-white rounded-md hover:bg-blue-800 transition-colors font-medium"
           >
             Try Friendly GL Agent
           </Link>

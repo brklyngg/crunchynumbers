@@ -26,14 +26,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col bg-gray-50`}
       >
         <div className="flex flex-1">
           {/* Sidebar */}
-          <aside className="bg-gray-100 w-64 p-6 flex flex-col">
-            <Link href="/" className="text-xl font-semibold mb-6">Crunchy Numbers</Link>
+          <aside className="bg-gray-800 w-64 p-6 flex flex-col text-white">
+            <Link href="/" className="text-xl font-semibold mb-6 text-white hover:text-blue-200">Crunchy Numbers</Link>
             <nav className="space-y-2">
-              <Link href="/friendly-gl-agent" className="block p-2 hover:bg-gray-200 rounded">
+              <Link href="/friendly-gl-agent" className="block p-2 hover:bg-gray-700 rounded text-gray-100">
                 Friendly GL Agent
               </Link>
               {/* More tools can be added here */}
@@ -41,25 +41,25 @@ export default function RootLayout({
           </aside>
           
           {/* Main content */}
-          <main className="flex-1 p-8">
+          <main className="flex-1 p-8 bg-white">
             {children}
           </main>
         </div>
         
         {/* Footer with legal links */}
-        <footer className="bg-gray-100 py-4 px-6 border-t border-gray-200">
+        <footer className="bg-gray-800 py-4 px-6 border-t border-gray-700 text-white">
           <div className="container mx-auto">
-            <div className="flex flex-wrap justify-center text-sm text-gray-600 gap-6">
-              <Link href="/friendly-gl-agent/launch" className="hover:underline">
+            <div className="flex flex-wrap justify-center text-sm gap-6">
+              <Link href="/friendly-gl-agent/launch" className="text-gray-200 hover:text-white hover:underline">
                 Launch Friendly GL Agent
               </Link>
-              <Link href="/friendly-gl-agent/disconnect" className="hover:underline">
+              <Link href="/friendly-gl-agent/disconnect" className="text-gray-200 hover:text-white hover:underline">
                 Disconnect Friendly GL Agent
               </Link>
-              <Link href="/friendly-gl-agent/terms" className="hover:underline">
+              <Link href="/friendly-gl-agent/terms" className="text-gray-200 hover:text-white hover:underline">
                 Terms of Service
               </Link>
-              <Link href="/privacy-policy" className="hover:underline">
+              <Link href="/privacy-policy" className="text-gray-200 hover:text-white hover:underline">
                 Privacy Policy
               </Link>
             </div>
