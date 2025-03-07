@@ -100,7 +100,7 @@ export default function Terms() {
           <h3 className="text-xl font-medium mt-8 mb-4">9. Contact Information</h3>
           <p className="mb-6">
             If you have any questions about this Agreement, please contact us at{" "}
-            <a href="mailto:legal@crunchy.tools" className="text-blue-600 hover:underline">
+            <a href="mailto:gurevich.gary@gmail.com" className="text-blue-600 hover:underline">
               legal@crunchy.tools
             </a>.
           </p>

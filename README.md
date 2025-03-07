@@ -69,4 +69,4 @@ This project is proprietary and confidential.
 
 ## Contact
 
-For any questions or feedback, please reach out to [contact@crunchy.tools](mailto:contact@crunchy.tools).
+For any questions or feedback, please reach out to [contact@crunchy.tools](mailto:gurevich.gary@gmail.com).
