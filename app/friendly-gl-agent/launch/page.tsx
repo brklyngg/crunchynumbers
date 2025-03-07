@@ -12,11 +12,11 @@ export default function Launch() {
             <h2 className="text-2xl font-semibold mb-4">Connect to QuickBooks</h2>
             <p className="text-gray-700 mb-6 text-lg">
               Friendly GL Agent securely connects to your QuickBooks Online account to help you analyze and 
-              manage your general ledger data more effectively. This integration is powered by Intuit's 
+              manage your general ledger data more effectively. This integration is powered by Intuit&apos;s 
               secure OAuth 2.0 protocol.
             </p>
             <p className="text-gray-700 mb-6">
-              By connecting your accounting data, you'll be able to:
+              By connecting your accounting data, you&apos;ll be able to:
             </p>
             <ul className="list-disc pl-8 text-gray-700 space-y-2 mb-6">
               <li>Automatically import and categorize transactions</li>
@@ -44,10 +44,10 @@ export default function Launch() {
         <div className="bg-blue-50 p-6 rounded-md border border-blue-200 mb-8">
           <h3 className="font-medium text-blue-800 mb-4 text-lg">Connection Process:</h3>
           <ul className="list-disc pl-8 text-blue-700 space-y-3">
-            <li>Click the "Connect to QuickBooks" button below</li>
+            <li>Click the &quot;Connect to QuickBooks&quot; button below</li>
             <li>Sign in to your QuickBooks Online account when prompted</li>
             <li>Review and authorize the permissions requested</li>
-            <li>You'll be redirected back to Crunchy Numbers to start using Friendly GL Agent</li>
+            <li>You&apos;ll be redirected back to Crunchy Numbers to start using Friendly GL Agent</li>
           </ul>
         </div>
         

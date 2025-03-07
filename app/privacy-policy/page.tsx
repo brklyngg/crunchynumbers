@@ -36,14 +36,14 @@ export default function PrivacyPolicy() {
           
           <h2 className="text-2xl font-semibold mt-8 mb-6">Intuit Data Connection</h2>
           <p className="mb-6">
-            When you connect Friendly GL Agent to your QuickBooks account through Intuit's API:
+            When you connect Friendly GL Agent to your QuickBooks account through Intuit&apos;s API:
           </p>
           <ul className="list-disc pl-8 mb-6 space-y-2">
             <li>We access only the data necessary to provide our services, based on the permissions you grant</li>
             <li>Your connection is secured using OAuth 2.0 protocol, an industry-standard secure authorization method</li>
             <li>We do not store your QuickBooks login credentials</li>
             <li>You can revoke access at any time through our disconnect page or through your Intuit account</li>
-            <li>We comply with Intuit's developer requirements and data handling policies</li>
+            <li>We comply with Intuit&apos;s developer requirements and data handling policies</li>
           </ul>
           
           <h2 className="text-2xl font-semibold mt-8 mb-6">Data Retention</h2>
@@ -67,7 +67,7 @@ export default function PrivacyPolicy() {
           <p className="mb-6">
             When you use Friendly GL Agent, you may connect to third-party accounting systems like QuickBooks. 
             The information collected through these connections is subject to this Privacy Policy, as well
-            as any privacy policies of the connected services. We recommend reviewing Intuit's privacy policy
+            as any privacy policies of the connected services. We recommend reviewing Intuit&apos;s privacy policy
             to understand how they handle your data.
           </p>
           <p className="mb-6">
@@ -96,7 +96,7 @@ export default function PrivacyPolicy() {
           <h2 className="text-2xl font-semibold mt-8 mb-6">Changes to This Policy</h2>
           <p className="mb-6">
             We may update this Privacy Policy from time to time. We will notify you of any changes by posting
-            the new Privacy Policy on this page and updating the "Last updated" date. You are advised to review
+            the new Privacy Policy on this page and updating the &quot;Last updated&quot; date. You are advised to review
             this Privacy Policy periodically for any changes.
           </p>
           

@@ -18,7 +18,7 @@ export default function Disconnect() {
             <li>Your OAuth connection to QuickBooks will be revoked</li>
             <li>Friendly GL Agent will no longer have access to your QuickBooks data</li>
             <li>Any cached data will be deleted from our servers within 30 days</li>
-            <li>Reports and analyses you've already generated will remain available</li>
+            <li>Reports and analyses you&apos;ve already generated will remain available</li>
             <li>You can reconnect your account at any time</li>
           </ul>
         </div>
@@ -26,11 +26,11 @@ export default function Disconnect() {
         <div className="bg-gray-50 p-6 rounded-md border border-gray-200 mb-8">
           <h3 className="font-medium text-gray-800 mb-4">Additional Information</h3>
           <p className="text-gray-700 mb-4">
-            Disconnecting your account does not delete your Crunchy Numbers account or any reports you've already generated. 
+            Disconnecting your account does not delete your Crunchy Numbers account or any reports you&apos;ve already generated. 
             It only removes the connection between Friendly GL Agent and your QuickBooks Online account.
           </p>
           <p className="text-gray-700 mb-4">
-            If you're experiencing issues with your connection, you might want to try reconnecting instead of disconnecting. 
+            If you&apos;re experiencing issues with your connection, you might want to try reconnecting instead of disconnecting. 
             Please contact our support team if you need assistance.
           </p>
           <p className="text-gray-700 text-sm">

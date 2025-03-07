@@ -30,7 +30,7 @@ export default function Terms() {
             acknowledge and agree to the following:
           </p>
           <ul className="list-disc pl-8 mb-6 space-y-2">
-            <li>You have authorized Crunchy Numbers to access your QuickBooks data through Intuit's API</li>
+            <li>You have authorized Crunchy Numbers to access your QuickBooks data through Intuit&apos;s API</li>
             <li>You understand that this connection can be revoked by you at any time</li>
             <li>You are responsible for maintaining the confidentiality of your QuickBooks credentials</li>
             <li>Crunchy Numbers is not affiliated with or endorsed by Intuit Inc.</li>
@@ -46,7 +46,7 @@ export default function Terms() {
           </p>
           <p className="mb-6">
             We will only access, use, and store the minimum amount of data necessary to provide the
-            Software's functionality. We will not sell your data to third parties or use it for purposes
+            Software&apos;s functionality. We will not sell your data to third parties or use it for purposes
             beyond those specified in our Privacy Policy without your explicit consent.
           </p>
           
@@ -72,7 +72,7 @@ export default function Terms() {
           
           <h3 className="text-xl font-medium mt-8 mb-4">6. Disclaimer of Warranties</h3>
           <p className="mb-6">
-            THE SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+            THE SOFTWARE IS PROVIDED &quot;AS IS&quot; WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
             INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
             PARTICULAR PURPOSE, OR NON-INFRINGEMENT. CRUNCHY NUMBERS DOES NOT WARRANT THAT THE SOFTWARE
             WILL MEET YOUR REQUIREMENTS OR THAT THE OPERATION OF THE SOFTWARE WILL BE UNINTERRUPTED OR
