@@ -8,7 +8,7 @@ export default function PrivacyPolicy() {
       <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 mb-8">
         <div className="prose prose-slate max-w-none">
           <p className="lead">
-            This Privacy Policy describes how Crunchy Numbers ("we", "our", or "us") collects, uses,
+            This Privacy Policy describes how Crunchy Numbers (&quot;we&quot;, &quot;our&quot;, or &quot;us&quot;) collects, uses,
             and shares information in connection with your use of our websites and services.
           </p>
           

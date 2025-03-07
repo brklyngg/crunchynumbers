@@ -14,7 +14,7 @@ export default function Launch() {
         <div className="bg-blue-50 p-4 rounded-md border border-blue-200 mb-6">
           <h3 className="font-medium text-blue-800 mb-2">What happens next:</h3>
           <ul className="list-disc pl-5 text-blue-700 space-y-1">
-            <li>You'll be redirected to authorize access to your accounting system</li>
+            <li>You&apos;ll be redirected to authorize access to your accounting system</li>
             <li>Select the data you want to connect</li>
             <li>Return to Crunchy Numbers to start using Friendly GL Agent</li>
           </ul>

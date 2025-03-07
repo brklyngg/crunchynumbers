@@ -9,8 +9,8 @@ export default function Terms() {
         <div className="prose prose-slate max-w-none">
           <h2>End User License Agreement</h2>
           <p>
-            This End User License Agreement ("Agreement") is a legal document that governs your use
-            of the Friendly GL Agent software application ("Software"), provided by Crunchy Numbers.
+            This End User License Agreement (&quot;Agreement&quot;) is a legal document that governs your use
+            of the Friendly GL Agent software application (&quot;Software&quot;), provided by Crunchy Numbers.
           </p>
           
           <h3>1. Grant of License</h3>
