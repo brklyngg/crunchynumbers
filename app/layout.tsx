@@ -1,21 +1,13 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Crunchy Numbers",
-  description: "Niche tools for finance & operations leaders",
+  title: "Gary Gurevich",
+  description: "Finance + Ops leader. Inventor. Idealist (by choice)",
 };
 
 export default function RootLayout({
@@ -25,43 +17,48 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col bg-gray-50`}
-      >
-        <div className="flex flex-1">
-          {/* Sidebar */}
-          <aside className="bg-gray-800 w-64 p-6 flex flex-col text-white">
-            <Link href="/" className="text-xl font-semibold mb-6 text-white hover:text-blue-200">Crunchy Numbers</Link>
-            <nav className="space-y-2">
-              <Link href="/friendly-gl-agent" className="block p-2 hover:bg-gray-700 rounded text-gray-100">
-                Friendly GL Agent
+      <body className={`${inter.className} antialiased bg-gray-50`}>
+        <nav className="bg-white border-b border-gray-200">
+          <div className="max-w-6xl mx-auto px-4 py-4">
+            <div className="flex items-center justify-between">
+              <Link href="/" className="text-xl font-semibold text-gray-900 hover:text-gray-700">
+                Gary Gurevich
               </Link>
-              {/* More tools can be added here */}
-            </nav>
-          </aside>
-          
-          {/* Main content */}
-          <main className="flex-1 p-8 bg-white">
-            {children}
-          </main>
-        </div>
+              <div className="flex items-center space-x-8">
+                <Link href="/" className="text-gray-600 hover:text-gray-900">
+                  Projects
+                </Link>
+                <Link href="/about" className="text-gray-600 hover:text-gray-900">
+                  About
+                </Link>
+              </div>
+            </div>
+          </div>
+        </nav>
         
-        {/* Footer with legal links */}
-        <footer className="bg-gray-800 py-4 px-6 border-t border-gray-700 text-white">
-          <div className="container mx-auto">
-            <div className="flex flex-wrap justify-center text-sm gap-6">
-              <Link href="/friendly-gl-agent/launch" className="text-gray-200 hover:text-white hover:underline">
+        <main className="min-h-screen">
+          {children}
+        </main>
+        
+        {/* Footer with legal links for Friendly GL Agent */}
+        <footer className="bg-white border-t border-gray-200 mt-20">
+          <div className="max-w-6xl mx-auto px-4 py-8">
+            <div className="flex flex-wrap justify-center text-sm gap-6 text-gray-500">
+              <Link href="/friendly-gl-agent/launch" className="hover:text-gray-700">
                 Launch Friendly GL Agent
               </Link>
-              <Link href="/friendly-gl-agent/disconnect" className="text-gray-200 hover:text-white hover:underline">
+              <Link href="/friendly-gl-agent/disconnect" className="hover:text-gray-700">
                 Disconnect Friendly GL Agent
               </Link>
-              <Link href="/friendly-gl-agent/terms" className="text-gray-200 hover:text-white hover:underline">
+              <Link href="/friendly-gl-agent/terms" className="hover:text-gray-700">
                 Terms of Service
               </Link>
-              <Link href="/privacy-policy" className="text-gray-200 hover:text-white hover:underline">
+              <Link href="/privacy-policy" className="hover:text-gray-700">
                 Privacy Policy
               </Link>
+            </div>
+            <div className="text-center text-sm text-gray-400 mt-4">
+              © {new Date().getFullYear()} Gary Gurevich
             </div>
           </div>
         </footer>
