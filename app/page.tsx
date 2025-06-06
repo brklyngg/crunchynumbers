@@ -22,8 +22,8 @@ const projects = [
     name: "Scenic Route",
     description: "AI-powered travel itinerary generator",
     url: "/projects/scenic-route",
-    externalUrl: "#",
-    stats: "Coming soon",
+    externalUrl: "https://scenic-route.netlify.app",
+    stats: "Live",
     logo: "/globe.svg"
   },
   {
