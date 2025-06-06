@@ -11,12 +11,12 @@ const projects = [
     logo: "/calculator.svg"
   },
   {
-    name: "Flowocity",
-    description: "Cash flow forecasting for startups",
-    url: "/projects/flowocity",
-    externalUrl: "https://flowocity.com",
-    stats: "Partnership project",
-    logo: "/globe.svg"
+    name: "Monocle",
+    description: "Night-vision monocle for navigating dark rooms",
+    url: "/projects/monocle",
+    externalUrl: "#",
+    stats: "For new dads",
+    logo: "/monocle.svg"
   },
   {
     name: "Scenic Route",
@@ -24,7 +24,7 @@ const projects = [
     url: "/projects/scenic-route",
     externalUrl: "https://scenic-route.netlify.app",
     stats: "Live",
-    logo: "/globe.svg"
+    logo: "/motorcycle.svg"
   },
   {
     name: "Old People Safety Lamp",
