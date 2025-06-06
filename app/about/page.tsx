@@ -35,43 +35,6 @@ export default function About() {
       </div>
 
       <div className="mb-12">
-        <h2 className="text-2xl font-semibold text-gray-900 mb-6">Work</h2>
-        <div className="space-y-4">
-          <div className="flex items-start">
-            <div className="flex-1">
-              <h3 className="font-semibold text-gray-900">Wyng</h3>
-              <p className="text-gray-600">Finance + Operations Leader</p>
-              <p className="text-gray-500 text-sm">Current</p>
-            </div>
-          </div>
-          <div className="flex items-start">
-            <div className="flex-1">
-              <h3 className="font-semibold text-gray-900">The Farmer&apos;s Dog</h3>
-              <p className="text-gray-600">Finance</p>
-            </div>
-          </div>
-          <div className="flex items-start">
-            <div className="flex-1">
-              <h3 className="font-semibold text-gray-900">Greenhouse</h3>
-              <p className="text-gray-600">Finance</p>
-            </div>
-          </div>
-          <div className="flex items-start">
-            <div className="flex-1">
-              <h3 className="font-semibold text-gray-900">Canary</h3>
-              <p className="text-gray-600">Finance</p>
-            </div>
-          </div>
-          <div className="flex items-start">
-            <div className="flex-1">
-              <h3 className="font-semibold text-gray-900">Spongecell</h3>
-              <p className="text-gray-600">Finance</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="mb-12">
         <h2 className="text-2xl font-semibold text-gray-900 mb-6">Connect</h2>
         <div className="flex space-x-6">
           <Link 

@@ -55,16 +55,6 @@ const projects = [
 export default function Home() {
   return (
     <div className="max-w-6xl mx-auto px-4 py-16">
-      <div className="mb-12">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">
-          Hey, I&apos;m Gary Gurevich
-        </h1>
-        <p className="text-xl text-gray-600 max-w-3xl">
-          I love building things that are useful or funny (ideally both). 
-          Most of my projects involve Google Sheets, because I&apos;m a finance bro.
-        </p>
-      </div>
-
       <div className="mb-8">
         <h2 className="text-2xl font-semibold text-gray-900 mb-6">Projects</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
