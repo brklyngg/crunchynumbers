@@ -38,8 +38,8 @@ const projects = [
     name: "Just the Tip Calculator",
     description: "Simple, elegant tip calculator",
     url: "/projects/tip-calculator",
-    externalUrl: "#",
-    stats: "Mobile app",
+    externalUrl: "https://chatgpt.com/g/g-Vyi6ogfWP-just-the-tip",
+    stats: "Custom GPT",
     logo: "/calculator.svg"
   },
   {

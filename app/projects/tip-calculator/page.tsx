@@ -17,61 +17,72 @@ export default function TipCalculatorProject() {
         <div className="flex items-start justify-between mb-6">
           <div>
             <h1 className="text-4xl font-bold text-gray-900 mb-4">
-              Tip Calculator
+              Just the Tip Calculator
             </h1>
             <p className="text-xl text-gray-600">
-              Smart tipping calculator with bill splitting and international currency support
+              AI-powered tip calculator that splits bills and handles any dining scenario
             </p>
           </div>
-          <button 
-            disabled
-            className="inline-flex items-center px-4 py-2 bg-gray-300 text-gray-500 rounded-md cursor-not-allowed"
+          <Link 
+            href="https://chatgpt.com/g/g-Vyi6ogfWP-just-the-tip"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center px-4 py-2 bg-gray-900 text-white rounded-md hover:bg-gray-800 transition-colors"
           >
-            Coming Soon
-          </button>
+            Try GPT
+            <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </Link>
         </div>
 
         <div className="flex items-center space-x-6 text-sm text-gray-500">
-          <span>In Development</span>
+          <span>Live on ChatGPT</span>
           <span>•</span>
-          <span>Utility App</span>
+          <span>Custom GPT</span>
         </div>
       </div>
 
       <div className="prose prose-lg max-w-none mb-12">
         <h2>Overview</h2>
         <p>
-          Tip Calculator reimagines the simple act of calculating tips with a feature-rich 
-          application that handles complex dining scenarios. From splitting bills among groups 
-          with different payment preferences to understanding tipping customs in different 
-          countries, this app makes end-of-meal calculations effortless.
+          Just the Tip is a custom ChatGPT that makes calculating tips and splitting bills 
+          effortless. Simply tell it your bill amount, desired tip percentage, and how many 
+          people are splitting, and it handles all the math instantly. Perfect for group 
+          dinners, quick calculations, or understanding tipping customs.
         </p>
 
-        <h2>Planned Features</h2>
+        <h2>Features</h2>
         <ul>
-          <li>Intelligent bill splitting with individual item assignment</li>
-          <li>Location-aware tipping suggestions based on local customs</li>
-          <li>Multiple currency support with real-time conversion</li>
-          <li>Receipt scanning for automatic itemization</li>
-          <li>Payment app integration for seamless group payments</li>
+          <li>Instant tip calculations with customizable percentages</li>
+          <li>Smart bill splitting for groups of any size</li>
+          <li>Handles complex scenarios like different tip amounts per person</li>
+          <li>Provides tipping etiquette advice for different situations</li>
+          <li>Natural language interface - just describe your situation</li>
         </ul>
 
-        <h2>Technical Details</h2>
+        <h2>How It Works</h2>
         <p>
-          The Tip Calculator will feature OCR technology for receipt scanning, integration with 
-          currency exchange APIs, and a sophisticated calculation engine that handles complex 
-          splitting scenarios. The app will also include a database of international tipping 
-          customs to help travelers navigate different cultural expectations.
+          As a custom GPT, Just the Tip uses natural language processing to understand your 
+          dining scenario and provide accurate calculations. You can ask questions like 
+          &quot;Split $120 between 4 people with 20% tip&quot; or &quot;What&apos;s appropriate 
+          tip for coffee shop?&quot; and get instant, helpful responses.
         </p>
       </div>
 
       <div className="border-t border-gray-200 pt-8">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Project Status</h3>
-        <p className="text-gray-600">
-          Currently building the core calculation engine and designing the user interface. 
-          The receipt scanning feature is in active development, with initial release planned 
-          for early 2025.
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">Try It Out</h3>
+        <p className="text-gray-600 mb-4">
+          Just the Tip is available now as a custom GPT. Start calculating tips the easy way!
         </p>
+        <Link 
+          href="https://chatgpt.com/g/g-Vyi6ogfWP-just-the-tip" 
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-600 hover:text-blue-800"
+        >
+          Open Just the Tip Calculator →
+        </Link>
       </div>
     </div>
   );
