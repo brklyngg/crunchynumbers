@@ -6,8 +6,8 @@ import Link from "next/link";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Gary Gurevich",
-  description: "Finance + Ops leader. Inventor. Idealist (by choice)",
+  title: "crunchy tools",
+  description: "Niche tools for finance & operations leaders",
 };
 
 export default function RootLayout({
