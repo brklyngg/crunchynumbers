@@ -20,7 +20,7 @@ export default function TipCalculatorProject() {
               Just the Tip Calculator
             </h1>
             <p className="text-xl text-gray-600">
-              AI-powered tip calculator that splits bills and handles any dining scenario
+              Tell it your bill. It does the math.
             </p>
           </div>
           <Link 
@@ -37,52 +37,23 @@ export default function TipCalculatorProject() {
         </div>
 
         <div className="flex items-center space-x-6 text-sm text-gray-500">
-          <span>Live on ChatGPT</span>
-          <span>•</span>
-          <span>Custom GPT</span>
+          <span>ChatGPT</span>
         </div>
       </div>
 
       <div className="prose prose-lg max-w-none mb-12">
-        <h2>Overview</h2>
+        <h2>What</h2>
         <p>
-          Just the Tip is a custom ChatGPT that makes calculating tips and splitting bills 
-          effortless. Simply tell it your bill amount, desired tip percentage, and how many 
-          people are splitting, and it handles all the math instantly. Perfect for group 
-          dinners, quick calculations, or understanding tipping customs.
+          Split bills. Calculate tips. No app needed.
         </p>
 
-        <h2>Features</h2>
-        <ul>
-          <li>Instant tip calculations with customizable percentages</li>
-          <li>Smart bill splitting for groups of any size</li>
-          <li>Handles complex scenarios like different tip amounts per person</li>
-          <li>Provides tipping etiquette advice for different situations</li>
-          <li>Natural language interface - just describe your situation</li>
-        </ul>
-
-        <h2>How It Works</h2>
+        <h2>How</h2>
         <p>
-          As a custom GPT, Just the Tip uses natural language processing to understand your 
-          dining scenario and provide accurate calculations. You can ask questions like 
-          &quot;Split $120 between 4 people with 20% tip&quot; or &quot;What&apos;s appropriate 
-          tip for coffee shop?&quot; and get instant, helpful responses.
+          Say: &quot;$120, 4 people, 20% tip&quot;
         </p>
-      </div>
-
-      <div className="border-t border-gray-200 pt-8">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Try It Out</h3>
-        <p className="text-gray-600 mb-4">
-          Just the Tip is available now as a custom GPT. Start calculating tips the easy way!
+        <p>
+          Get: &quot;$36 each&quot;
         </p>
-        <Link 
-          href="https://chatgpt.com/g/g-Vyi6ogfWP-just-the-tip" 
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-600 hover:text-blue-800"
-        >
-          Open Just the Tip Calculator →
-        </Link>
       </div>
     </div>
   );

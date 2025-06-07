@@ -17,10 +17,10 @@ export default function SafetyLampProject() {
         <div className="flex items-start justify-between mb-6">
           <div>
             <h1 className="text-4xl font-bold text-gray-900 mb-4">
-              Safety Lamp
+              Old People Safety Lamp
             </h1>
             <p className="text-xl text-gray-600">
-              Personal safety companion app with real-time location sharing and emergency features
+              Light that knows when you fall.
             </p>
           </div>
           <button 
@@ -32,45 +32,19 @@ export default function SafetyLampProject() {
         </div>
 
         <div className="flex items-center space-x-6 text-sm text-gray-500">
-          <span>In Development</span>
-          <span>•</span>
-          <span>Personal Safety</span>
+          <span>In development</span>
         </div>
       </div>
 
       <div className="prose prose-lg max-w-none mb-12">
-        <h2>Overview</h2>
+        <h2>What</h2>
         <p>
-          Safety Lamp is a comprehensive personal safety application designed to help users feel 
-          secure in various situations. Whether walking alone at night, traveling to new places, 
-          or simply wanting peace of mind, Safety Lamp provides intelligent safety features that 
-          work seamlessly in the background.
+          Smart lamp. Detects falls. Calls for help.
         </p>
 
-        <h2>Planned Features</h2>
-        <ul>
-          <li>One-tap emergency alerts to trusted contacts with location sharing</li>
-          <li>Virtual companion mode with automated check-ins</li>
-          <li>Safe route recommendations based on time of day and location data</li>
-          <li>Discreet SOS activation through gesture recognition</li>
-          <li>Integration with local emergency services and safety resources</li>
-        </ul>
-
-        <h2>Technical Details</h2>
+        <h2>Why</h2>
         <p>
-          Safety Lamp will utilize advanced location services, real-time communication protocols, 
-          and machine learning to provide proactive safety features. The app will prioritize user 
-          privacy while ensuring rapid response capabilities in emergency situations, with all 
-          data encrypted end-to-end.
-        </p>
-      </div>
-
-      <div className="border-t border-gray-200 pt-8">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Project Status</h3>
-        <p className="text-gray-600">
-          Currently in the design and prototyping phase. We&apos;re conducting user research to ensure 
-          the app meets real-world safety needs while maintaining ease of use. Beta testing planned 
-          for mid-2025.
+          Living alone. Peace of mind.
         </p>
       </div>
     </div>

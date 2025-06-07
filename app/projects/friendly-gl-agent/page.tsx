@@ -20,7 +20,7 @@ export default function FriendlyGLAgentProject() {
               Friendly GL Agent
             </h1>
             <p className="text-xl text-gray-600">
-              Smart assistant for QuickBooks Online that helps automate bookkeeping tasks
+              QuickBooks. But faster.
             </p>
           </div>
           <Link 
@@ -38,59 +38,26 @@ export default function FriendlyGLAgentProject() {
 
         <div className="flex items-center space-x-6 text-sm text-gray-500">
           <span>100+ users</span>
-          <span>•</span>
-          <span>QuickBooks Integration</span>
         </div>
       </div>
 
       <div className="prose prose-lg max-w-none mb-12">
-        <h2>Overview</h2>
+        <h2>What</h2>
         <p>
-          Friendly GL Agent is an AI-powered assistant that integrates directly with QuickBooks Online 
-          to help small business owners and bookkeepers automate their accounting tasks. It uses 
-          natural language processing to understand your requests and execute complex bookkeeping 
-          operations automatically.
+          Type what you want done. It happens in QuickBooks.
         </p>
 
-        <h2>Features</h2>
-        <ul>
-          <li>Natural language interface for QuickBooks operations</li>
-          <li>Automated journal entry creation and categorization</li>
-          <li>Smart expense tracking and reconciliation</li>
-          <li>Real-time sync with QuickBooks Online</li>
-          <li>Secure OAuth integration</li>
-        </ul>
-
-        <h2>Technical Details</h2>
+        <h2>How</h2>
         <p>
-          Built with Next.js and TypeScript, Friendly GL Agent leverages the QuickBooks Online API 
-          for seamless integration. The AI component uses advanced language models to interpret 
-          user requests and translate them into precise accounting actions.
+          Connect QuickBooks. Tell it what to do. Done.
         </p>
-      </div>
 
-      <div className="border-t border-gray-200 pt-8">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Links</h3>
-        <div className="space-y-2">
-          <Link 
-            href="/friendly-gl-agent" 
-            className="block text-blue-600 hover:text-blue-800"
-          >
-            Get Started with Friendly GL Agent →
+        <h2>Links</h2>
+        <p>
+          <Link href="/friendly-gl-agent" className="text-blue-600 hover:text-blue-800">
+            Start here
           </Link>
-          <Link 
-            href="/friendly-gl-agent/terms" 
-            className="block text-gray-600 hover:text-gray-900"
-          >
-            Terms of Service
-          </Link>
-          <Link 
-            href="/privacy-policy" 
-            className="block text-gray-600 hover:text-gray-900"
-          >
-            Privacy Policy
-          </Link>
-        </div>
+        </p>
       </div>
     </div>
   );
