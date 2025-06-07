@@ -3,6 +3,30 @@ import Image from "next/image";
 
 const projects = [
   {
+    name: "Scenic Route",
+    description: "Scenic motorcycle routes via Google Maps",
+    url: "/projects/scenic-route",
+    externalUrl: "https://scenic-route.netlify.app",
+    isLive: true,
+    logo: "/motorcycle.svg"
+  },
+  {
+    name: "Just the Tip",
+    description: "Simple, elegant tip calculator",
+    url: "/projects/tip-calculator",
+    externalUrl: "https://chatgpt.com/g/g-Vyi6ogfWP-just-the-tip",
+    isLive: true,
+    logo: "/calculator.svg"
+  },
+  {
+    name: "Hot Sput Summer",
+    description: "Sputnik Summer Picnic Tour 2025",
+    url: "/projects/hot-sput-summer",
+    externalUrl: "https://hot-sputnik-summer.netlify.app/",
+    isLive: true,
+    logo: "/globe.svg"
+  },
+  {
     name: "Friendly GL Agent",
     description: "Like Mickey's magic broom in Fantasia, but for Google Sheets and QuickBooks",
     url: "/projects/friendly-gl-agent",
@@ -19,14 +43,6 @@ const projects = [
     logo: "/monocle.svg"
   },
   {
-    name: "Scenic Route",
-    description: "Scenic motorcycle routes via Google Maps",
-    url: "/projects/scenic-route",
-    externalUrl: "https://scenic-route.netlify.app",
-    isLive: true,
-    logo: "/motorcycle.svg"
-  },
-  {
     name: "Old People Safety Lamp",
     description: "Smart home safety solution for seniors",
     url: "/projects/safety-lamp",
@@ -35,28 +51,12 @@ const projects = [
     logo: "/window.svg"
   },
   {
-    name: "Just the Tip",
-    description: "Simple, elegant tip calculator",
-    url: "/projects/tip-calculator",
-    externalUrl: "https://chatgpt.com/g/g-Vyi6ogfWP-just-the-tip",
-    isLive: true,
-    logo: "/calculator.svg"
-  },
-  {
     name: '"Truthiness" Evaluator',
     description: "Multiple AIs debate claims and return true/false with context",
     url: "/projects/truthiness",
     externalUrl: "#",
     isLive: false,
     logo: "/file.svg"
-  },
-  {
-    name: "Hot Sput Summer",
-    description: "Sputnik Summer Picnic Tour 2025",
-    url: "/projects/hot-sput-summer",
-    externalUrl: "https://hot-sputnik-summer.netlify.app/",
-    isLive: true,
-    logo: "/globe.svg"
   }
 ];
 
