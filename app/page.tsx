@@ -24,7 +24,7 @@ const projects = [
     url: "/projects/hot-sput-summer",
     externalUrl: "https://hot-sputnik-summer.netlify.app/",
     isLive: true,
-    logo: "/globe.svg"
+    logo: "/dog.svg"
   },
   {
     name: "Friendly GL Agent",
@@ -48,7 +48,7 @@ const projects = [
     url: "/projects/safety-lamp",
     externalUrl: "#",
     isLive: false,
-    logo: "/window.svg"
+    logo: "/lamp.svg"
   },
   {
     name: '"Truthiness" Evaluator',
@@ -56,7 +56,7 @@ const projects = [
     url: "/projects/truthiness",
     externalUrl: "#",
     isLive: false,
-    logo: "/file.svg"
+    logo: "/brain.svg"
   }
 ];
 
