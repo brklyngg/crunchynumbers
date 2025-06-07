@@ -5,13 +5,16 @@ export default function About() {
   return (
     <div className="max-w-3xl mx-auto px-4 py-16">
       <div className="mb-12">
-        <Image
-          src="/gary-profile.jpg"
-          alt="Gary Gurevich"
-          width={120}
-          height={120}
-          className="rounded-full mb-6"
-        />
+        <div className="relative w-32 h-32 mb-6 overflow-hidden rounded-full">
+          <Image
+            src="/gary-childhood.jpg"
+            alt="Gary Gurevich"
+            width={128}
+            height={128}
+            className="object-cover object-center scale-125"
+            style={{ objectPosition: '50% 40%' }}
+          />
+        </div>
         <h1 className="text-4xl font-bold text-gray-900 mb-4">
           Gary Gurevich
         </h1>
@@ -22,15 +25,13 @@ export default function About() {
 
       <div className="prose prose-lg text-gray-700 mb-12">
         <p>
-          I&apos;m Gary Gurevich—I love building things that are useful or funny (ideally both). 
-          Most of my projects involve Google Sheets, because I&apos;m a finance bro. I lead 
-          finance & operations @ Wyng, and I&apos;m building Flowocity as a partnership with 
-          my former sensei in tech startup finance.
+          I love building stuff that&apos;s either useful or funny. Ideally, both. Most of my projects involve Google Sheets.
         </p>
         <p>
-          Building is my hobby, my calling - my small way of making a dent in the universe. 
-          This website is where I share new creations: for you, for me, and maybe even 
-          for posterity.
+          I lead finance & operations @ Wyng, and I&apos;m building Flowocity as a partnership with my former sensei in tech startup finance.
+        </p>
+        <p>
+          Building is my small way of making a dent in the universe. This website is where I share new creations. For you, for me, and for posterity.
         </p>
       </div>
 
@@ -52,12 +53,6 @@ export default function About() {
             className="text-gray-600 hover:text-gray-900"
           >
             GitHub
-          </Link>
-          <Link 
-            href="mailto:gurevich.gary@gmail.com"
-            className="text-gray-600 hover:text-gray-900"
-          >
-            Email
           </Link>
         </div>
       </div>
