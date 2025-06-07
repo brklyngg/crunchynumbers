@@ -20,7 +20,7 @@ export default function HotSputSummerProject() {
               Hot Sput Summer
             </h1>
             <p className="text-xl text-gray-600">
-              Sputnik Summer Picnic Tour 2025
+              A cosmic summer adventure awaits
             </p>
           </div>
           <Link 
@@ -44,12 +44,17 @@ export default function HotSputSummerProject() {
       <div className="prose prose-lg max-w-none mb-12">
         <h2>What</h2>
         <p>
-          Summer picnic tour celebrating Sputnik culture.
+          Hot Sput Summer is a retro-futuristic summer experience inspired by the space age optimism of the 1950s and 60s. Think atomic age aesthetics, mid-century modern design, and that special brand of cosmic enthusiasm that launched Sputnik into orbit.
         </p>
 
-        <h2>How</h2>
+        <h2>The Vibe</h2>
         <p>
-          Join the tour. Experience the vibes. Embrace the summer.
+          Picture this: summer picnics with a space-age twist. Atomic ranch parties. Mid-century cocktails under the stars. A celebration of that brief moment when the future felt infinite and rockets pointed toward utopia.
+        </p>
+
+        <h2>Join the Mission</h2>
+        <p>
+          Whether you&apos;re a devotee of googie architecture, a collector of atomic-era ephemera, or just someone who believes the future was cooler in the past, Hot Sput Summer is your cosmic summer destination.
         </p>
       </div>
     </div>
