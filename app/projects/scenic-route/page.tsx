@@ -20,7 +20,7 @@ export default function ScenicRouteProject() {
               Scenic Route
             </h1>
             <p className="text-xl text-gray-600">
-              AI plans your trip. You enjoy it.
+              Find twisty roads. Avoid highways.
             </p>
           </div>
           <Link 
@@ -44,15 +44,12 @@ export default function ScenicRouteProject() {
       <div className="prose prose-lg max-w-none mb-12">
         <h2>What</h2>
         <p>
-          Tell it where. When. What you like.
-        </p>
-        <p>
-          Get a day-by-day plan.
+          Motorcycle routes. Curves preferred.
         </p>
 
         <h2>How</h2>
         <p>
-          Enter destination. Pick dates. Get itinerary.
+          Pick start. Pick end. Get twisties.
         </p>
       </div>
     </div>
