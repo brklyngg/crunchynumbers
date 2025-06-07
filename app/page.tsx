@@ -20,7 +20,7 @@ const projects = [
   },
   {
     name: "Scenic Route",
-    description: "Motorcycle trip planner with twisty roads",
+    description: "Scenic motorcycle routes via Google Maps",
     url: "/projects/scenic-route",
     externalUrl: "https://scenic-route.netlify.app",
     isLive: true,
