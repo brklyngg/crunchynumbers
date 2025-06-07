@@ -17,10 +17,10 @@ export default function TruthinessProject() {
         <div className="flex items-start justify-between mb-6">
           <div>
             <h1 className="text-4xl font-bold text-gray-900 mb-4">
-              Truthiness Evaluator
+              &quot;Truthiness&quot; Evaluator
             </h1>
             <p className="text-xl text-gray-600">
-              Paste claim. Get facts.
+              Multiple AIs debate and evaluate claims
             </p>
           </div>
           <button 
@@ -39,12 +39,12 @@ export default function TruthinessProject() {
       <div className="prose prose-lg max-w-none mb-12">
         <h2>What</h2>
         <p>
-          AI checks claims. Shows sources.
+          Multiple AI agents independently evaluate claims, statements, or news articles. They debate among themselves, cross-reference sources, and return a true/false verdict with comprehensive context.
         </p>
 
         <h2>How</h2>
         <p>
-          Paste text. AI searches. True or false.
+          Submit any claim or article. Multiple AIs analyze it from different perspectives, engage in structured debate, fact-check against reliable sources, and provide a consensus verdict with supporting evidence.
         </p>
       </div>
     </div>
