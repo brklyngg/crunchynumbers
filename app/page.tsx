@@ -49,6 +49,14 @@ const projects = [
     externalUrl: "#",
     isLive: false,
     logo: "/file.svg"
+  },
+  {
+    name: "Hot Sput Summer",
+    description: "Sputnik Summer Picnic Tour 2025",
+    url: "/projects/hot-sput-summer",
+    externalUrl: "https://hot-sputnik-summer.netlify.app/",
+    isLive: true,
+    logo: "/globe.svg"
   }
 ];
 
