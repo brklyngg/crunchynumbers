@@ -99,6 +99,33 @@ app/
 
 Automatic deployment on push to `main` branch.
 
+## Copy Quality Workflow
+
+**Custom Agent:** `.claude/agents/copy-quality-inspector.md`
+
+A specialized Claude Code agent that scans website copy for clichés, filler words, and generic marketing jargon. Run it to maintain sharp, specific writing.
+
+**Usage:**
+```
+@agent-copy-quality-inspector please review the website
+```
+
+**Tracking:** Results are logged in `cliche_crap.md` with:
+- Specific phrases flagged
+- File locations and context
+- Why it's problematic
+- Suggested alternatives
+
+**Current Status (Nov 7, 2025):**
+- 15 active issues across 9 pages
+- Main culprits: vague adjectives (comprehensive, unique, capable, elegant), marketing buzzwords (solution, destination), Steve Jobs cliché ("making a dent in the universe")
+- Ultra-minimal project pages (Scenic Route, Monocle, Safety Lamp, Tip Calculator) are clean—their brevity avoids fluff
+
+**Next Steps:**
+- Review `cliche_crap.md` and fix flagged issues
+- Re-run agent after edits—it automatically moves fixed items to "Resolved Issues"
+- Proactively run before publishing new pages
+
 ## Important Notes
 
 - **No server-side rendering** - All pages are static HTML
