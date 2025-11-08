@@ -11,6 +11,14 @@ const projects = [
     logo: "/motorcycle.svg"
   },
   {
+    name: "BMW R90/6 Street Racer",
+    description: "Classic airhead café racer conversion with modern performance upgrades",
+    url: "/projects/bmw-r90-6-racer",
+    externalUrl: "#",
+    isLive: false,
+    logo: "/airhead-racer.svg"
+  },
+  {
     name: "Just the Tip",
     description: "Simple, elegant tip calculator",
     url: "/projects/tip-calculator",
