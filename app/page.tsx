@@ -43,6 +43,14 @@ const projects = [
     logo: "/dog.svg"
   },
   {
+    name: "Flowocity",
+    description: "Embedded finance team for venture-backed startups - full-stack CFO, FP&A, and accounting",
+    url: "https://www.flowocity.ai/",
+    externalUrl: "https://www.flowocity.ai/",
+    isLive: true,
+    logo: "/flowocity.png"
+  },
+  {
     name: "Friendly GL Agent",
     description: "Like Mickey's magic broom in Fantasia, but for Google Sheets and QuickBooks",
     url: "/projects/friendly-gl-agent",
