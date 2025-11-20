@@ -181,10 +181,10 @@ const Level1Childhood: React.FC<LevelProps> = ({ onComplete, setAudioMood }) => 
         </div>
       </div>
 
-      {/* Hand Choice Overlay */}
+      {/* Hand Choice Overlay - Semi-transparent to show trophy behind */}
       {showHandChoice && (
-        <div className="absolute inset-0 bg-black/80 flex flex-col items-center justify-center z-50">
-          <h2 className="text-4xl font-bold text-white mb-8">ACCEPT TROPHY WITH...</h2>
+        <div className="absolute inset-0 bg-black/70 flex flex-col items-center justify-center z-50">
+          <h2 className="text-4xl font-bold text-white mb-8 drop-shadow-[2px_2px_4px_rgba(0,0,0,0.8)]">ACCEPT TROPHY WITH...</h2>
           <div className="flex gap-8">
             <button
               onClick={() => handleHandChoice('left')}
@@ -216,7 +216,7 @@ const Level1Childhood: React.FC<LevelProps> = ({ onComplete, setAudioMood }) => 
               <span className="text-2xl font-bold text-white">RIGHT HAND</span>
             </button>
           </div>
-          <p className="text-white mt-6 text-sm">Press ← or → arrow keys</p>
+          <p className="text-white mt-6 text-sm drop-shadow-[2px_2px_4px_rgba(0,0,0,0.8)]">Press ← or → arrow keys</p>
         </div>
       )}
 
@@ -260,7 +260,8 @@ const Level1Childhood: React.FC<LevelProps> = ({ onComplete, setAudioMood }) => 
              <div className="h-1/2 bg-black/10"></div>
              <div className="h-1/2 bg-black/20"></div>
         </div>
-        <Flag className="absolute right-[-20px] top-[-50px] text-red-600" size={48} />
+        {/* Flag turns green when finished */}
+        <Flag className={`absolute right-[-20px] top-[-50px] transition-colors duration-500 ${finished ? 'text-green-500' : 'text-red-600'}`} size={48} fill={finished ? 'currentColor' : 'none'} />
       </div>
 
       <div className="mt-12 md:hidden z-20">
