@@ -10,9 +10,7 @@ const Level3Twenties: React.FC<LevelProps> = ({ onComplete, onFail }) => {
   const [score, setScore] = useState(0);
   const [feedback, setFeedback] = useState<string>("");
 
-  const lastDistractionRef = useRef<'BEER' | 'TIGER' | null>(null);
   const gameLoopRef = useRef<ReturnType<typeof setInterval>>(undefined);
-  const eventLoopRef = useRef<ReturnType<typeof setInterval>>(undefined);
 
   useEffect(() => {
     gameLoopRef.current = setInterval(() => {
@@ -56,29 +54,32 @@ const Level3Twenties: React.FC<LevelProps> = ({ onComplete, onFail }) => {
     return () => clearInterval(timer);
   }, [score, onComplete]);
 
-  // Distraction Spawner
+  // Distraction Spawner - Creates rhythm throughout 30 seconds
   useEffect(() => {
-    const spawnEvent = () => {
-        if (activeDistraction !== 'NONE') return;
+    // Schedule multiple distraction events throughout the level
+    const schedule = [
+      { time: 3000, type: 'TIGER' as const, duration: 4000 },     // 3s: Tiger for 4s
+      { time: 8000, type: 'NONE' as const, duration: 2000 },      // 8s: Break for 2s
+      { time: 10000, type: 'BEER' as const, duration: 5000 },     // 10s: Beer for 5s
+      { time: 16000, type: 'NONE' as const, duration: 2000 },     // 16s: Break for 2s
+      { time: 18000, type: 'TIGER' as const, duration: 6000 },    // 18s: Tiger for 6s
+      { time: 25000, type: 'NONE' as const, duration: 1000 },     // 25s: Break for 1s
+      { time: 26000, type: 'BEER' as const, duration: 4000 },     // 26s: Beer for 4s (until end)
+    ];
 
-        // High chance to spawn to keep it engaging over 30s
-        if (Math.random() > 0.3) { 
-            let type: 'BEER' | 'TIGER';
-            if (lastDistractionRef.current === 'BEER') {
-                type = 'TIGER';
-            } else if (lastDistractionRef.current === 'TIGER') {
-                type = 'BEER';
-            } else {
-                type = Math.random() > 0.5 ? 'BEER' : 'TIGER';
-            }
-            lastDistractionRef.current = type;
-            setActiveDistraction(type);
-        }
+    const timeouts: NodeJS.Timeout[] = [];
+
+    schedule.forEach(event => {
+      const timeout = setTimeout(() => {
+        setActiveDistraction(event.type);
+      }, event.time);
+      timeouts.push(timeout);
+    });
+
+    return () => {
+      timeouts.forEach(t => clearTimeout(t));
     };
-
-    eventLoopRef.current = setInterval(spawnEvent, 2000); 
-    return () => clearInterval(eventLoopRef.current);
-  }, [activeDistraction]);
+  }, []);
 
   const handleNudge = useCallback((direction: 'left' | 'right') => {
       setFocus(prev => {
@@ -88,10 +89,17 @@ const Level3Twenties: React.FC<LevelProps> = ({ onComplete, onFail }) => {
   }, []);
 
   const handleDistractionClick = () => {
+      // Clicking a distraction temporarily dismisses it
       setScore(s => s + 1);
       setFeedback("NICE!");
+      const previousDistraction = activeDistraction;
       setActiveDistraction('NONE');
       setTimeout(() => setFeedback(""), 500);
+
+      // Distraction comes back after 2 seconds
+      setTimeout(() => {
+          setActiveDistraction(previousDistraction);
+      }, 2000);
   };
 
   useEffect(() => {
