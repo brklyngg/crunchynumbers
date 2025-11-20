@@ -36,6 +36,14 @@ const projects = [
     logo: "/dog.svg"
   },
   {
+    name: "Alex: 40 Levels Deep",
+    description: "Retro arcade game celebrating 40 years - mash buttons through decades of life",
+    url: "/projects/alex40",
+    externalUrl: "#",
+    isLive: true,
+    logo: "/alex40.svg"
+  },
+  {
     name: "Flowocity",
     description: "Embedded finance team for venture-backed startups - full-stack CFO, FP&A, and accounting",
     url: "https://www.flowocity.ai/",
