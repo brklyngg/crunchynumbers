@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 const projects = [
+  // Active projects first
   {
     name: "Scenic Route",
     description: "Find twisty motorcycle routes - pick start and end points, avoid highways, get curves",
@@ -9,14 +10,6 @@ const projects = [
     externalUrl: "https://scenic-route.netlify.app",
     isLive: true,
     logo: "/motorcycle.svg"
-  },
-  {
-    name: "BMW R90/6 Street Racer",
-    description: "Classic airhead café racer conversion with modern performance upgrades",
-    url: "/projects/bmw-r90-6-racer",
-    externalUrl: "#",
-    isLive: false,
-    logo: "/airhead-racer.svg"
   },
   {
     name: "Just the Tip",
@@ -49,6 +42,15 @@ const projects = [
     externalUrl: "https://www.flowocity.ai/",
     isLive: true,
     logo: "/flowocity.png"
+  },
+  // In-development projects
+  {
+    name: "BMW R90/6 Street Racer",
+    description: "Classic airhead café racer conversion with modern performance upgrades",
+    url: "/projects/bmw-r90-6-racer",
+    externalUrl: "#",
+    isLive: false,
+    logo: "/airhead-racer.svg"
   },
   {
     name: "Friendly GL Agent",
