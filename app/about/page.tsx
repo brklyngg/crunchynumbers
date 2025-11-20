@@ -28,7 +28,7 @@ export default function About() {
           I love building stuff that&apos;s either useful or funny. Ideally, both. Most of my projects involve Google Sheets.
         </p>
         <p>
-          I lead finance & operations @ Wyng, and I&apos;m building Flowocity as a partnership with my former sensei in tech startup finance.
+          I&apos;ve partnered up with my former sensei (<Link href="https://www.linkedin.com/in/pdleahy/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">Pat Leahy</Link>) and an overpowered wizard (<Link href="https://www.linkedin.com/in/jasoncohen4/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">Jason Cohen</Link>) to build THE finance team for startups: <Link href="https://www.flowocity.ai/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">Flowocity</Link>.
         </p>
         <p>
           Building is my small way of making a dent in the universe. This website is where I share new creations. For you, for me, and for posterity.
