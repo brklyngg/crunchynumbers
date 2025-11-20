@@ -194,14 +194,12 @@ const Level1Childhood: React.FC<LevelProps> = ({ onComplete, setAudioMood }) => 
           className="h-full bg-red-500 border-r-4 border-black transition-all duration-75 ease-linear relative"
           style={{ width: `${distance}%` }}
         >
-            {/* Character - Forward facing runner with brown hair */}
+            {/* Character - Forward facing runner */}
             <div className="absolute right-[-20px] top-[-50px] flex items-center">
               <div className="relative">
-                {/* Brown-haired runner */}
-                <div className="text-5xl" style={{ transform: 'scaleX(1)' }}>
+                {/* Runner facing forward (flipped horizontally) */}
+                <div className="text-5xl" style={{ transform: 'scaleX(-1)' }}>
                   🏃
-                  {/* Brown hair overlay */}
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-6 h-6 bg-amber-800 rounded-full border-2 border-black -translate-y-2"></div>
                 </div>
 
                 {/* Trophy Logic */}
