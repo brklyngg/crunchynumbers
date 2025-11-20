@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@700&display=swap');
 
 html {
   scroll-behavior: smooth;
@@ -46,4 +47,76 @@ body {
 
 .prose li {
   color: #374151;
+}
+
+/* ContextCal Styles */
+.font-display {
+  font-family: 'Playfair Display', serif;
+}
+
+/* Print Styles for ContextCal */
+.print-only {
+  display: none;
+}
+
+@media print {
+  @page {
+    margin: 0;
+    size: letter; /* 8.5in x 11in */
+  }
+
+  html, body {
+    height: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white;
+  }
+
+  /* Hide all screen content */
+  body * {
+    visibility: hidden;
+  }
+
+  /* Reset ancestors of print-only to ensure it can be positioned */
+  body, #__next, main, .app-container {
+    display: block !important;
+    height: auto !important;
+    width: 100% !important;
+    overflow: visible !important;
+    position: static !important;
+  }
+
+  /* Show the print container and its children */
+  .print-only, .print-only * {
+    visibility: visible !important;
+  }
+
+  .print-only {
+    display: block !important;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+  }
+
+  .print-sheet {
+    break-after: page;
+    page-break-after: always;
+    /* Force exact dimensions in print mode */
+    width: 8.5in !important;
+    height: 11in !important;
+    overflow: hidden !important;
+    /* Use padding to simulate margins */
+    padding: 0.5in !important;
+    margin: 0 !important;
+    border: none !important;
+    display: flex !important;
+    flex-direction: column !important;
+    background: white !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
 }

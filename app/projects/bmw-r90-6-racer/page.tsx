@@ -65,10 +65,10 @@ export default function BMWRacerProject() {
 
         <h2>The Philosophy</h2>
         <p>
-          This build preserves the bike's authentic character—keeping the original
+          This build preserves the bike&apos;s authentic character—keeping the original
           1.85 B 19 front and 2.15 B 18 rear wheels—while upgrading every system
-          for modern reliability and performance. It's about respecting the airhead's
-          heritage while making it a capable street racer for today's roads.
+          for modern reliability and performance. It&apos;s about respecting the airhead&apos;s
+          heritage while making it a capable street racer for today&apos;s roads.
         </p>
 
         <h2>The Details</h2>

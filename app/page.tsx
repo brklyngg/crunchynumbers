@@ -27,6 +27,14 @@ const projects = [
     logo: "/calculator.svg"
   },
   {
+    name: "ContextCal",
+    description: "Printable wall calendar - pick any month, print 9 pages, tape together",
+    url: "/projects/contextcal",
+    externalUrl: "#",
+    isLive: true,
+    logo: "/calendar.svg"
+  },
+  {
     name: "Hot Sput Summer",
     description: "Sputnik Summer Picnic Tour 2025",
     url: "/projects/hot-sput-summer",
