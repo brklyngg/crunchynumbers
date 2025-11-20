@@ -239,13 +239,15 @@ const Level1Childhood: React.FC<LevelProps> = ({ onComplete, setAudioMood }) => 
                   🏃
                 </div>
 
-                {/* Trophy Logic */}
+                {/* Trophy Logic - Bigger and more visible */}
                 {finished && !showHandChoice && !showError && (
-                    <Trophy className="text-yellow-400 absolute -right-8 top-2 drop-shadow-[2px_2px_0_black] animate-pulse" size={32} />
+                    <div className="absolute -right-12 -top-4 bg-yellow-400 p-2 rounded-full border-4 border-yellow-600 shadow-lg animate-pulse">
+                      <Trophy className="text-yellow-900" size={48} strokeWidth={3} />
+                    </div>
                 )}
                 {showError && (
-                    <div className="absolute right-[-40px] top-0">
-                        <X className="text-red-600 w-12 h-12 animate-ping" strokeWidth={4} />
+                    <div className="absolute right-[-50px] -top-2">
+                        <X className="text-red-600 w-16 h-16 animate-ping" strokeWidth={4} />
                     </div>
                 )}
               </div>
