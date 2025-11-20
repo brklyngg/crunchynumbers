@@ -131,6 +131,43 @@ const Level1Childhood: React.FC<LevelProps> = ({ onComplete, setAudioMood }) => 
     <div className="flex flex-col items-center justify-center h-full w-full bg-sky-300 relative overflow-hidden border-4 border-black select-none">
       {/* Background Scenery */}
       <div className="absolute bottom-0 w-full h-32 bg-green-600 border-t-4 border-black"></div>
+
+      {/* Left Bleachers */}
+      <div className="absolute left-0 bottom-32 w-1/4 h-40">
+        {/* Bleacher structure */}
+        <div className="absolute bottom-0 left-4 w-full h-8 bg-gray-400 border-2 border-black"></div>
+        <div className="absolute bottom-8 left-8 w-5/6 h-8 bg-gray-400 border-2 border-black"></div>
+        <div className="absolute bottom-16 left-12 w-4/6 h-8 bg-gray-400 border-2 border-black"></div>
+        <div className="absolute bottom-24 left-16 w-3/6 h-8 bg-gray-400 border-2 border-black"></div>
+
+        {/* Spectators - simple circles/ovals with cheering animation */}
+        <div className="absolute bottom-2 left-6 w-3 h-3 bg-blue-500 rounded-full border border-black animate-bounce" style={{ animationDelay: '0ms' }}></div>
+        <div className="absolute bottom-2 left-10 w-3 h-3 bg-red-500 rounded-full border border-black animate-bounce" style={{ animationDelay: '100ms' }}></div>
+        <div className="absolute bottom-2 left-14 w-3 h-3 bg-yellow-500 rounded-full border border-black animate-bounce" style={{ animationDelay: '200ms' }}></div>
+        <div className="absolute bottom-10 left-10 w-3 h-3 bg-green-500 rounded-full border border-black animate-bounce" style={{ animationDelay: '300ms' }}></div>
+        <div className="absolute bottom-10 left-14 w-3 h-3 bg-purple-500 rounded-full border border-black animate-bounce" style={{ animationDelay: '400ms' }}></div>
+        <div className="absolute bottom-18 left-14 w-3 h-3 bg-pink-500 rounded-full border border-black animate-bounce" style={{ animationDelay: '500ms' }}></div>
+        <div className="absolute bottom-18 left-18 w-3 h-3 bg-orange-500 rounded-full border border-black animate-bounce" style={{ animationDelay: '600ms' }}></div>
+      </div>
+
+      {/* Right Bleachers */}
+      <div className="absolute right-0 bottom-32 w-1/4 h-40">
+        {/* Bleacher structure */}
+        <div className="absolute bottom-0 right-4 w-full h-8 bg-gray-400 border-2 border-black"></div>
+        <div className="absolute bottom-8 right-8 w-5/6 h-8 bg-gray-400 border-2 border-black"></div>
+        <div className="absolute bottom-16 right-12 w-4/6 h-8 bg-gray-400 border-2 border-black"></div>
+        <div className="absolute bottom-24 right-16 w-3/6 h-8 bg-gray-400 border-2 border-black"></div>
+
+        {/* Spectators - simple circles/ovals with cheering animation */}
+        <div className="absolute bottom-2 right-6 w-3 h-3 bg-red-500 rounded-full border border-black animate-bounce" style={{ animationDelay: '150ms' }}></div>
+        <div className="absolute bottom-2 right-10 w-3 h-3 bg-blue-500 rounded-full border border-black animate-bounce" style={{ animationDelay: '250ms' }}></div>
+        <div className="absolute bottom-2 right-14 w-3 h-3 bg-green-500 rounded-full border border-black animate-bounce" style={{ animationDelay: '350ms' }}></div>
+        <div className="absolute bottom-10 right-10 w-3 h-3 bg-yellow-500 rounded-full border border-black animate-bounce" style={{ animationDelay: '450ms' }}></div>
+        <div className="absolute bottom-10 right-14 w-3 h-3 bg-orange-500 rounded-full border border-black animate-bounce" style={{ animationDelay: '550ms' }}></div>
+        <div className="absolute bottom-18 right-14 w-3 h-3 bg-purple-500 rounded-full border border-black animate-bounce" style={{ animationDelay: '650ms' }}></div>
+        <div className="absolute bottom-18 right-18 w-3 h-3 bg-pink-500 rounded-full border border-black animate-bounce" style={{ animationDelay: '750ms' }}></div>
+      </div>
+
       <div className="absolute top-20 left-20 w-16 h-16 bg-yellow-300 rounded-full border-4 border-black animate-pulse"></div>
 
       <div className="absolute top-10 right-10 text-white opacity-80 text-6xl select-none">☁️</div>
