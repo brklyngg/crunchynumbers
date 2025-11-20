@@ -4,8 +4,8 @@ import Image from "next/image";
 const projects = [
   {
     name: "Scenic Route",
-    description: "Scenic motorcycle routes via Google Maps",
-    url: "/projects/scenic-route",
+    description: "Find twisty motorcycle routes - pick start and end points, avoid highways, get curves",
+    url: "https://scenic-route.netlify.app",
     externalUrl: "https://scenic-route.netlify.app",
     isLive: true,
     logo: "/motorcycle.svg"
@@ -20,8 +20,8 @@ const projects = [
   },
   {
     name: "Just the Tip",
-    description: "Simple, elegant tip calculator",
-    url: "/projects/tip-calculator",
+    description: "ChatGPT tip calculator - split bills and calculate tips with natural language",
+    url: "https://chatgpt.com/g/g-Vyi6ogfWP-just-the-tip",
     externalUrl: "https://chatgpt.com/g/g-Vyi6ogfWP-just-the-tip",
     isLive: true,
     logo: "/calculator.svg"
@@ -36,8 +36,8 @@ const projects = [
   },
   {
     name: "Hot Sput Summer",
-    description: "Sputnik Summer Picnic Tour 2025",
-    url: "/projects/hot-sput-summer",
+    description: "Retro space-age summer experience - atomic picnics and mid-century vibes",
+    url: "https://hot-sputnik-summer.netlify.app/",
     externalUrl: "https://hot-sputnik-summer.netlify.app/",
     isLive: true,
     logo: "/dog.svg"
