@@ -18,13 +18,19 @@ const Level3Twenties: React.FC<LevelProps> = ({ onComplete, onFail }) => {
     gameLoopRef.current = setInterval(() => {
       setFocus(prev => {
         let change = 0;
+
+        // Constant pulling from active distraction
         if (activeDistraction === 'TIGER') {
-            change -= 0.8; 
+            change -= 0.8;
         } else if (activeDistraction === 'BEER') {
             change += 0.8;
-        } else {
+        }
+
+        // Natural drift towards center when no distraction
+        if (activeDistraction === 'NONE') {
             change = Math.sin(Date.now() / 500) * 0.1;
         }
+
         const newVal = prev + change;
         if (newVal <= 0 || newVal >= 100) {
             onFail();
@@ -159,13 +165,14 @@ const Level3Twenties: React.FC<LevelProps> = ({ onComplete, onFail }) => {
                 }}
             >
                 <BookOpen size={48} className="mx-auto mb-4 text-stone-800" />
-                <h3 className="font-bold text-lg underline decoration-2 mb-2">STUDYING...</h3>
-                
+                <h3 className="font-bold text-lg underline decoration-2 mb-2">FOCUS ON</h3>
+                <h3 className="font-bold text-lg underline decoration-2 mb-2">YOUR STUDIES!</h3>
+
                 <div className="mt-4 w-full h-4 bg-gray-200 rounded-full overflow-hidden border border-black">
                     <div className={`h-full ${isBlurry ? 'bg-red-500' : 'bg-green-500'}`} style={{ width: '100%' }}></div>
                 </div>
-                <p className="text-[10px] mt-2 font-bold uppercase">
-                    {activeDistraction === 'TIGER' ? "LADY TIGER!" : activeDistraction === 'BEER' ? "BEER TIME!" : "FOCUSED"}
+                <p className="text-[10px] mt-2 font-bold uppercase text-stone-700">
+                    {isBlurry ? "OUT OF FOCUS!" : "STAY CENTERED"}
                 </p>
             </div>
         </div>
