@@ -240,14 +240,15 @@ const Level1Childhood: React.FC<LevelProps> = ({ onComplete, setAudioMood }) => 
                 </div>
 
                 {/* Trophy Logic - Bigger and more visible */}
-                {finished && !showHandChoice && !showError && (
+                {finished && !showHandChoice && (
                     <div className="absolute -right-12 -top-4 bg-yellow-400 p-2 rounded-full border-4 border-yellow-600 shadow-lg animate-pulse">
                       <Trophy className="text-yellow-900" size={48} strokeWidth={3} />
                     </div>
                 )}
+                {/* Red X appears on top of trophy if left hand chosen */}
                 {showError && (
-                    <div className="absolute right-[-50px] -top-2">
-                        <X className="text-red-600 w-16 h-16 animate-ping" strokeWidth={4} />
+                    <div className="absolute -right-12 -top-4 z-10">
+                        <X className="text-red-600 w-20 h-20 animate-ping" strokeWidth={5} />
                     </div>
                 )}
               </div>
