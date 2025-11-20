@@ -38,16 +38,24 @@ export default function About() {
       <div className="mb-12">
         <h2 className="text-2xl font-semibold text-gray-900 mb-6">Connect</h2>
         <div className="flex space-x-6">
-          <Link 
-            href="https://x.com/BrklynGG" 
+          <Link
+            href="https://www.linkedin.com/in/ggurevich/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-600 hover:text-gray-900"
+          >
+            LinkedIn
+          </Link>
+          <Link
+            href="https://x.com/BrklynGG"
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-600 hover:text-gray-900"
           >
             Twitter/X
           </Link>
-          <Link 
-            href="https://github.com/brklyngg" 
+          <Link
+            href="https://github.com/brklyngg"
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-600 hover:text-gray-900"
