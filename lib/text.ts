@@ -49,8 +49,8 @@ async function parsePdfFile(file: File): Promise<string> {
   const buffer = new Uint8Array(arrayBuffer);
 
   try {
-    const { getTextFromPdf } = await import('unpdf');
-    const { text } = await getTextFromPdf(buffer);
+    const { extractText } = await import('unpdf');
+    const { text } = await extractText(buffer);
 
     if (!text || text.trim().length === 0) {
       throw new Error('No text could be extracted from the PDF');

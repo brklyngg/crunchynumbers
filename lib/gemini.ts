@@ -74,58 +74,59 @@ export async function generateImage(request: GeminiImageRequest): Promise<Gemini
           threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
         },
       ],
-    });
-
-    let fullPrompt = request.prompt;
-    if (request.stylePrompt) {
-      fullPrompt += `\n\nSTYLE: ${request.stylePrompt}`;
-    }
+      generationConfig: {
+        maxOutputTokens: 1290,
+        temperature: 0.7,
+      },
+      if(request.stylePrompt) {
+        fullPrompt += `\n\nSTYLE: ${request.stylePrompt}`;
+  }
 
     fullPrompt += '\n\nSAFETY: Child-friendly, appropriate for ages 3-12, no scary or inappropriate content';
-    fullPrompt += '\n\nPlease include SynthID watermark for AI content identification';
+  fullPrompt += '\n\nPlease include SynthID watermark for AI content identification';
 
-    const generationConfig = {
-      maxOutputTokens: 1290,
-      temperature: 0.7,
-    };
+  const generationConfig = {
+    maxOutputTokens: 1290,
+    temperature: 0.7,
+  };
 
-    const parts: Part[] = [{ text: fullPrompt }];
+  const parts: Part[] = [{ text: fullPrompt }];
 
-    if (request.referenceImage) {
-      parts.push({
-        inlineData: {
-          mimeType: 'image/jpeg',
-          data: request.referenceImage,
-        },
-      });
-    }
-
-    const result = await model.generateContent(parts, generationConfig);
-    const response = await result.response;
-
-    const imageData = response.candidates?.[0]?.content?.parts?.[0];
-
-    if (!imageData) {
-      throw new Error('No image generated in response');
-    }
-
-    const imageUrl = convertImageDataToUrl(imageData);
-
-    return {
-      imageUrl,
-      prompt: fullPrompt,
-      metadata: {
-        model: 'gemini-2.0-flash',
-        timestamp: Date.now(),
-        tokensUsed: 1290,
+  if (request.referenceImage) {
+    parts.push({
+      inlineData: {
+        mimeType: 'image/jpeg',
+        data: request.referenceImage,
       },
-      warnings: extractSafetyWarnings(response),
-    };
-
-  } catch (error) {
-    console.error('Gemini image generation error:', error);
-    throw new Error(`Failed to generate image: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    });
   }
+
+  const result = await model.generateContent(parts);
+  const response = await result.response;
+
+  const imageData = response.candidates?.[0]?.content?.parts?.[0];
+
+  if (!imageData) {
+    throw new Error('No image generated in response');
+  }
+
+  const imageUrl = convertImageDataToUrl(imageData);
+
+  return {
+    imageUrl,
+    prompt: fullPrompt,
+    metadata: {
+      model: 'gemini-2.0-flash',
+      timestamp: Date.now(),
+      tokensUsed: 1290,
+    },
+    warnings: extractSafetyWarnings(response),
+  };
+
+} catch (error) {
+  console.error('Gemini image generation error:', error);
+  throw new Error(`Failed to generate image: ${error instanceof Error ? error.message : 'Unknown error'}`);
+}
 }
 
 export async function editImage(

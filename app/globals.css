@@ -114,7 +114,7 @@ body {
   margin-bottom: 1rem;
 }
 
-.prose ul > * + * {
+.prose ul>*+* {
   margin-top: 0.5rem;
 }
 
@@ -135,10 +135,12 @@ body {
 @media print {
   @page {
     margin: 0;
-    size: letter; /* 8.5in x 11in */
+    size: letter;
+    /* 8.5in x 11in */
   }
 
-  html, body {
+  html,
+  body {
     height: 100%;
     margin: 0 !important;
     padding: 0 !important;
@@ -151,7 +153,10 @@ body {
   }
 
   /* Reset ancestors of print-only to ensure it can be positioned */
-  body, #__next, main, .app-container {
+  body,
+  #__next,
+  main,
+  .app-container {
     display: block !important;
     height: auto !important;
     width: 100% !important;
@@ -160,7 +165,8 @@ body {
   }
 
   /* Show the print container and its children */
-  .print-only, .print-only * {
+  .print-only,
+  .print-only * {
     visibility: visible !important;
   }
 
@@ -199,6 +205,7 @@ body {
   .line-clamp-3 {
     display: -webkit-box;
     -webkit-line-clamp: 3;
+    line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
@@ -222,6 +229,7 @@ body {
 }
 
 @keyframes pulse-gentle {
+
   0%,
   100% {
     opacity: 1;
