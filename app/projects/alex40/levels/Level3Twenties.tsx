@@ -55,27 +55,36 @@ const Level3Twenties: React.FC<LevelProps> = ({ onComplete, onFail }) => {
         return () => clearInterval(timer);
     }, [score, onComplete]);
 
-    // Distraction Spawner - Creates rhythm throughout 30 seconds
+    // Distraction Spawner - CHAOTIC & RANDOM
     useEffect(() => {
-        // Schedule multiple distraction events throughout the level
-        const schedule = [
-            { time: 3000, type: 'TIGER' as const, duration: 4000 },     // 3s: Tiger for 4s
-            { time: 8000, type: 'NONE' as const, duration: 2000 },      // 8s: Break for 2s
-            { time: 10000, type: 'BEER' as const, duration: 5000 },     // 10s: Beer for 5s
-            { time: 16000, type: 'NONE' as const, duration: 2000 },     // 16s: Break for 2s
-            { time: 18000, type: 'TIGER' as const, duration: 6000 },    // 18s: Tiger for 6s
-            { time: 25000, type: 'NONE' as const, duration: 1000 },     // 25s: Break for 1s
-            { time: 26000, type: 'BEER' as const, duration: 4000 },     // 26s: Beer for 4s (until end)
-        ];
-
         const timeouts: NodeJS.Timeout[] = [];
+        let currentTime = 1000; // Start after 1 second
 
-        schedule.forEach(event => {
-            const timeout = setTimeout(() => {
-                setActiveDistraction(event.type);
-            }, event.time);
-            timeouts.push(timeout);
-        });
+        // Generate events until the end of the level (30s)
+        while (currentTime < 29000) {
+            // Randomly choose distraction type
+            const type = Math.random() > 0.5 ? 'TIGER' : 'BEER';
+
+            // Random duration between 2s and 5s
+            const duration = 2000 + Math.floor(Math.random() * 3000);
+
+            const eventTime = currentTime;
+
+            // Schedule the start
+            timeouts.push(setTimeout(() => {
+                setActiveDistraction(type);
+            }, eventTime));
+
+            // Schedule the end (if it doesn't overlap with next event too much, but we want chaos)
+            // Actually, let's just let the next event override it or have a small gap.
+            // To ensure "no dull moments", we'll schedule the next event to start 
+            // shortly after this one ends, or even slightly before.
+
+            // Gap between 0s (immediate) and 1s
+            const gap = Math.floor(Math.random() * 1000);
+
+            currentTime += duration + gap;
+        }
 
         return () => {
             timeouts.forEach(t => clearTimeout(t));
@@ -157,8 +166,14 @@ const Level3Twenties: React.FC<LevelProps> = ({ onComplete, onFail }) => {
                             className="pointer-events-auto cursor-pointer animate-bounce"
                             onClick={handleDistractionClick}
                         >
-                            <div className="bg-amber-500 text-white p-4 rounded-full border-4 border-white shadow-[0_0_20px_orange]">
-                                <Beer size={48} />
+                            <div className="bg-amber-500 text-white p-2 rounded-full border-4 border-white shadow-[0_0_20px_orange]">
+                                <Image
+                                    src="/pixel-friends-cheering.svg"
+                                    alt="Friends Cheering"
+                                    width={80}
+                                    height={80}
+                                    className="object-contain"
+                                />
                                 <span className="block text-[10px] font-bold text-center mt-1">TASTY!</span>
                             </div>
                             <div className="text-amber-400 font-bold text-center mt-2 animate-pulse">PULLING &gt;&gt;&gt;</div>
