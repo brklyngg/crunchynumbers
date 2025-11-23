@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { LevelProps } from '../types';
 import PixelButton from '../components/PixelButton';
-import { BookOpen, Beer, ChevronLeft, ChevronRight } from 'lucide-react';
+import { BookOpen, ChevronLeft, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 
 const Level3Twenties: React.FC<LevelProps> = ({ onComplete, onFail }) => {
