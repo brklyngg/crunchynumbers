@@ -4,6 +4,14 @@ import Image from "next/image";
 const projects = [
   // Active projects first
   {
+    name: "Storytime",
+    description: "AI children's book generator - turn story prompts into illustrated books",
+    url: "/projects/storyteller",
+    externalUrl: "https://github.com/brklyngg/storybook-generator",
+    isLive: true,
+    logo: "/book.svg"
+  },
+  {
     name: "Scenic Route",
     description: "Find twisty motorcycle routes - pick start and end points, avoid highways, get curves",
     url: "https://scenic-route.netlify.app",
