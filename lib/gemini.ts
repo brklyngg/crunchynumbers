@@ -1,4 +1,4 @@
-import { GoogleGenerativeAI } from '@google/generative-ai';
+import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold, Part } from '@google/generative-ai';
 
 if (!process.env.GEMINI_API_KEY) {
   console.warn('GEMINI_API_KEY is not configured');
@@ -24,6 +24,30 @@ export interface GeminiImageResponse {
   warnings?: string[];
 }
 
+interface GeminiPart {
+  inlineData?: {
+    data: string;
+    mimeType?: string;
+  };
+  text?: string;
+}
+
+interface SafetyRating {
+  category: string;
+  probability: string;
+}
+
+interface GeminiResponse {
+  candidates?: {
+    content?: {
+      parts?: GeminiPart[];
+    };
+  }[];
+  promptFeedback?: {
+    safetyRatings?: SafetyRating[];
+  };
+}
+
 export async function generateImage(request: GeminiImageRequest): Promise<GeminiImageResponse> {
   if (!genAI) {
     throw new Error('GEMINI_API_KEY is not configured');
@@ -34,20 +58,20 @@ export async function generateImage(request: GeminiImageRequest): Promise<Gemini
       model: 'gemini-2.0-flash',
       safetySettings: [
         {
-          category: 'HARM_CATEGORY_HARASSMENT',
-          threshold: 'BLOCK_MEDIUM_AND_ABOVE',
+          category: HarmCategory.HARM_CATEGORY_HARASSMENT,
+          threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
         },
         {
-          category: 'HARM_CATEGORY_HATE_SPEECH',
-          threshold: 'BLOCK_MEDIUM_AND_ABOVE',
+          category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+          threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
         },
         {
-          category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT',
-          threshold: 'BLOCK_MEDIUM_AND_ABOVE',
+          category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
+          threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
         },
         {
-          category: 'HARM_CATEGORY_DANGEROUS_CONTENT',
-          threshold: 'BLOCK_MEDIUM_AND_ABOVE',
+          category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
+          threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
         },
       ],
     });
@@ -65,7 +89,7 @@ export async function generateImage(request: GeminiImageRequest): Promise<Gemini
       temperature: 0.7,
     };
 
-    const parts = [{ text: fullPrompt }];
+    const parts: Part[] = [{ text: fullPrompt }];
 
     if (request.referenceImage) {
       parts.push({
@@ -98,9 +122,9 @@ export async function generateImage(request: GeminiImageRequest): Promise<Gemini
       warnings: extractSafetyWarnings(response),
     };
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Gemini image generation error:', error);
-    throw new Error(`Failed to generate image: ${error.message}`);
+    throw new Error(`Failed to generate image: ${error instanceof Error ? error.message : 'Unknown error'}`);
   }
 }
 
@@ -149,13 +173,13 @@ export async function editImage(
       },
     };
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Gemini image edit error:', error);
-    throw new Error(`Failed to edit image: ${error.message}`);
+    throw new Error(`Failed to edit image: ${error instanceof Error ? error.message : 'Unknown error'}`);
   }
 }
 
-function convertImageDataToUrl(imageData: any): string {
+function convertImageDataToUrl(imageData: Part): string {
   if (imageData.inlineData?.data) {
     return `data:image/jpeg;base64,${imageData.inlineData.data}`;
   }
@@ -165,11 +189,11 @@ function convertImageDataToUrl(imageData: any): string {
   return `data:image/jpeg;base64,${Buffer.from('placeholder').toString('base64')}`;
 }
 
-function extractSafetyWarnings(response: any): string[] {
+function extractSafetyWarnings(response: GeminiResponse): string[] {
   const warnings: string[] = [];
 
   if (response.promptFeedback?.safetyRatings) {
-    response.promptFeedback.safetyRatings.forEach((rating: any) => {
+    response.promptFeedback.safetyRatings.forEach((rating) => {
       if (rating.probability !== 'NEGLIGIBLE') {
         warnings.push(`Safety concern: ${rating.category}`);
       }

@@ -1,16 +1,14 @@
 [build]
   command = "npm run build"
-  publish = "out"
+  publish = ".next"
 
 [build.environment]
   NODE_VERSION = "20"
   NPM_VERSION = "10"
 
-# Handle client-side routing for Next.js
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+# Required for Storybook Generator API routes
+[functions]
+  node_bundler = "esbuild"
 
 [dev]
   command = "npm run dev"
