@@ -52,11 +52,13 @@ async function parsePdfFile(file: File): Promise<string> {
     const { extractText } = await import('unpdf');
     const { text } = await extractText(buffer);
 
-    if (!text || text.trim().length === 0) {
+    const textContent = Array.isArray(text) ? text.join('\n') : text;
+
+    if (!textContent || textContent.trim().length === 0) {
       throw new Error('No text could be extracted from the PDF');
     }
 
-    return cleanExtractedText(text);
+    return cleanExtractedText(textContent);
   } catch (error) {
     console.error('PDF parsing error:', error);
     throw new Error('Failed to parse PDF file');
