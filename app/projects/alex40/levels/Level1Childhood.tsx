@@ -15,12 +15,38 @@ const Level1Childhood: React.FC<LevelProps> = ({ onComplete, setAudioMood }) => 
   const [showError, setShowError] = useState(false);
   const [playCheerSound, setPlayCheerSound] = useState(false);
 
+  // Hurdles Logic
+  const [isJumping, setIsJumping] = useState(false);
+  const [stunned, setStunned] = useState(false);
+  const HURDLES = [30, 70]; // Positions in %
+
   const handleSprint = useCallback(() => {
     if (!started && !finished) setStarted(true);
-    if (finished) return;
+    if (finished || stunned) return;
 
-    setDistance(prev => Math.min(prev + 2, GOAL_DISTANCE));
-  }, [started, finished]);
+    setDistance(prev => {
+      const nextDist = Math.min(prev + 2, GOAL_DISTANCE);
+
+      // Check Collision
+      const hitHurdle = HURDLES.some(h => Math.abs(nextDist - h) < 2);
+      if (hitHurdle && !isJumping) {
+        setStunned(true);
+        setAudioMood('ERROR');
+        setTimeout(() => {
+          setStunned(false);
+          setAudioMood('DEFAULT');
+        }, 1000);
+        return prev - 5; // Knockback
+      }
+      return nextDist;
+    });
+  }, [started, finished, stunned, isJumping, setAudioMood]);
+
+  const handleJump = useCallback(() => {
+    if (finished || stunned || isJumping) return;
+    setIsJumping(true);
+    setTimeout(() => setIsJumping(false), 600); // Jump duration
+  }, [finished, stunned, isJumping]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -33,12 +59,14 @@ const Level1Childhood: React.FC<LevelProps> = ({ onComplete, setAudioMood }) => 
         }
       } else if (e.code === 'Space' || e.code === 'ArrowRight' || e.code === 'ArrowLeft') {
         handleSprint();
+      } else if (e.code === 'ArrowUp') {
+        handleJump();
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [handleSprint, showHandChoice]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [handleSprint, handleJump, showHandChoice]);
 
   // Timer: Counts UP
   useEffect(() => {
@@ -181,48 +209,65 @@ const Level1Childhood: React.FC<LevelProps> = ({ onComplete, setAudioMood }) => 
         </div>
       </div>
 
-      {/* Hand Choice Overlay - Semi-transparent to show trophy behind */}
+      {/* Win Sequence Overlay */}
       {showHandChoice && (
         <div className="absolute inset-0 bg-black/70 flex flex-col items-center justify-center z-50">
           <h2 className="text-4xl font-bold text-white mb-8 drop-shadow-[2px_2px_4px_rgba(0,0,0,0.8)]">ACCEPT TROPHY WITH...</h2>
-          <div className="flex gap-8">
+
+          <div className="flex items-center gap-12">
+            {/* Left Hand Choice */}
             <button
               onClick={() => handleHandChoice('left')}
               disabled={handChosen !== null}
-              className={`flex flex-col items-center p-8 border-4 rounded-lg transition-all ${
-                handChosen === 'left'
+              className={`flex flex-col items-center p-8 border-4 rounded-lg transition-all ${handChosen === 'left'
                   ? 'bg-red-600 border-red-400 scale-95'
                   : handChosen === 'right'
-                  ? 'opacity-30'
-                  : 'bg-blue-600 border-blue-400 hover:scale-105 hover:bg-blue-500'
-              }`}
+                    ? 'opacity-30'
+                    : 'bg-blue-600 border-blue-400 hover:scale-105 hover:bg-blue-500'
+                }`}
             >
               <ArrowLeft size={64} className="text-white mb-4" />
               <span className="text-2xl font-bold text-white">LEFT HAND</span>
             </button>
 
+            {/* The Trophy (Center Stage) */}
+            <div className="relative">
+              <div className="bg-yellow-400 p-4 rounded-full border-4 border-yellow-600 shadow-[0_0_50px_yellow]">
+                <Trophy className="text-yellow-900 w-32 h-32" strokeWidth={2} />
+              </div>
+              {/* Red X Overlay */}
+              {showError && (
+                <div className="absolute inset-0 flex items-center justify-center z-20">
+                  <X className="text-red-600 w-48 h-48 animate-ping drop-shadow-lg" strokeWidth={5} />
+                </div>
+              )}
+            </div>
+
+            {/* Right Hand Choice */}
             <button
               onClick={() => handleHandChoice('right')}
               disabled={handChosen !== null}
-              className={`flex flex-col items-center p-8 border-4 rounded-lg transition-all ${
-                handChosen === 'right'
+              className={`flex flex-col items-center p-8 border-4 rounded-lg transition-all ${handChosen === 'right'
                   ? 'bg-green-600 border-green-400 scale-95'
                   : handChosen === 'left'
-                  ? 'opacity-30'
-                  : 'bg-blue-600 border-blue-400 hover:scale-105 hover:bg-blue-500'
-              }`}
+                    ? 'opacity-30'
+                    : 'bg-blue-600 border-blue-400 hover:scale-105 hover:bg-blue-500'
+                }`}
             >
               <ArrowRight size={64} className="text-white mb-4" />
               <span className="text-2xl font-bold text-white">RIGHT HAND</span>
             </button>
           </div>
-          <p className="text-white mt-6 text-sm drop-shadow-[2px_2px_4px_rgba(0,0,0,0.8)]">Press ← or → arrow keys</p>
+
+          <p className="text-white mt-8 text-lg drop-shadow-[2px_2px_4px_rgba(0,0,0,0.8)]">Press ← or → arrow keys</p>
         </div>
       )}
 
       <div className="z-10 text-center mb-8">
         <h2 className="text-4xl font-bold text-black drop-shadow-md mb-2">CAMP OLYMPIC</h2>
-        <p className="text-black font-bold bg-white/50 px-2">MASH <span className="text-red-600">[SPACE]</span> or <span className="text-red-600">[ARROWS]</span>!</p>
+        <p className="text-black font-bold bg-white/50 px-2">
+          MASH <span className="text-red-600">[SPACE]</span> TO RUN • <span className="text-blue-600">[UP]</span> TO JUMP
+        </p>
       </div>
 
       {/* Track */}
@@ -231,34 +276,43 @@ const Level1Childhood: React.FC<LevelProps> = ({ onComplete, setAudioMood }) => 
           className="h-full bg-red-500 border-r-4 border-black transition-all duration-75 ease-linear relative"
           style={{ width: `${distance}%` }}
         >
-            {/* Character - Forward facing runner */}
-            <div className="absolute right-[-20px] top-[-50px] flex items-center">
-              <div className="relative">
-                {/* Runner facing forward (flipped horizontally) */}
-                <div className="text-5xl" style={{ transform: 'scaleX(-1)' }}>
-                  🏃
-                </div>
-
-                {/* Trophy Logic - Bigger and more visible */}
-                {finished && !showHandChoice && (
-                    <div className="absolute -right-12 -top-4 bg-yellow-400 p-2 rounded-full border-4 border-yellow-600 shadow-lg animate-pulse">
-                      <Trophy className="text-yellow-900" size={48} strokeWidth={3} />
-                    </div>
-                )}
-                {/* Red X appears on top of trophy if left hand chosen */}
-                {showError && (
-                    <div className="absolute -right-12 -top-4 z-10">
-                        <X className="text-red-600 w-20 h-20 animate-ping" strokeWidth={5} />
-                    </div>
-                )}
+          {/* Character - Forward facing runner */}
+          <div
+            className={`absolute right-[-20px] top-[-50px] flex items-center transition-transform duration-200 ${isJumping ? '-translate-y-12' : ''}`}
+          >
+            <div className="relative">
+              {/* Runner facing forward (flipped horizontally) */}
+              <div className={`text-5xl ${stunned ? 'animate-spin' : ''}`} style={{ transform: 'scaleX(-1)' }}>
+                {stunned ? '💥' : '🏃'}
               </div>
+
+              {/* Trophy Logic - Only show here if NOT in hand choice mode (moved to overlay) */}
+              {finished && !showHandChoice && (
+                <div className="absolute -right-12 -top-4 bg-yellow-400 p-2 rounded-full border-4 border-yellow-600 shadow-lg animate-pulse">
+                  <Trophy className="text-yellow-900" size={48} strokeWidth={3} />
+                </div>
+              )}
             </div>
+          </div>
         </div>
+
+        {/* Hurdles */}
+        {HURDLES.map(pos => (
+          <div
+            key={pos}
+            className="absolute bottom-0 w-4 h-12 bg-white border-2 border-black flex flex-col justify-between"
+            style={{ left: `${pos}%` }}
+          >
+            <div className="w-full h-2 bg-red-600"></div>
+            <div className="w-full h-2 bg-red-600"></div>
+            <div className="w-full h-2 bg-red-600"></div>
+          </div>
+        ))}
 
         {/* Finish Line */}
         <div className="absolute right-0 top-0 h-full w-8 flex flex-col justify-between border-l-4 border-dashed border-black/50 opacity-50">
-             <div className="h-1/2 bg-black/10"></div>
-             <div className="h-1/2 bg-black/20"></div>
+          <div className="h-1/2 bg-black/10"></div>
+          <div className="h-1/2 bg-black/20"></div>
         </div>
         {/* Flag turns green when finished */}
         <Flag className={`absolute right-[-20px] top-[-50px] transition-colors duration-500 ${finished ? 'text-green-500' : 'text-red-600'}`} size={48} fill={finished ? 'currentColor' : 'none'} />
