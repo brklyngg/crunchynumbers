@@ -11,7 +11,7 @@ export interface ParsedText {
 
 export async function parseTextFile(file: File): Promise<string> {
   const fileType = getFileType(file);
-
+  
   try {
     switch (fileType) {
       case 'pdf':
@@ -32,7 +32,7 @@ export async function parseTextFile(file: File): Promise<string> {
 
 function getFileType(file: File): 'pdf' | 'epub' | 'txt' {
   const extension = file.name.split('.').pop()?.toLowerCase();
-
+  
   if (file.type === 'application/pdf' || extension === 'pdf') {
     return 'pdf';
   } else if (file.type === 'application/epub+zip' || extension === 'epub') {
@@ -40,25 +40,24 @@ function getFileType(file: File): 'pdf' | 'epub' | 'txt' {
   } else if (file.type === 'text/plain' || extension === 'txt') {
     return 'txt';
   }
-
+  
   throw new Error('Unsupported file format');
 }
 
 async function parsePdfFile(file: File): Promise<string> {
   const arrayBuffer = await file.arrayBuffer();
   const buffer = new Uint8Array(arrayBuffer);
-
+  
   try {
-    const { extractText } = await import('unpdf');
-    const { text } = await extractText(buffer);
-
-    const textContent = Array.isArray(text) ? text.join('\n') : text;
-
-    if (!textContent || textContent.trim().length === 0) {
+    const unpdf = await import('unpdf') as any;
+    const getTextFromPdf = unpdf.default?.getTextFromPdf || unpdf.getTextFromPdf;
+    const { text, totalPages } = await getTextFromPdf(buffer);
+    
+    if (!text || text.trim().length === 0) {
       throw new Error('No text could be extracted from the PDF');
     }
-
-    return cleanExtractedText(textContent);
+    
+    return cleanExtractedText(text);
   } catch (error) {
     console.error('PDF parsing error:', error);
     throw new Error('Failed to parse PDF file');
@@ -67,11 +66,11 @@ async function parsePdfFile(file: File): Promise<string> {
 
 async function parseTextOnly(file: File): Promise<string> {
   const text = await file.text();
-
+  
   if (!text || text.trim().length === 0) {
     throw new Error('The text file appears to be empty');
   }
-
+  
   return cleanExtractedText(text);
 }
 
@@ -89,7 +88,7 @@ export function getTextStats(text: string) {
   const words = text.split(/\s+/).filter(word => word.length > 0);
   const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0);
   const paragraphs = text.split(/\n\n+/).filter(p => p.trim().length > 0);
-
+  
   return {
     wordCount: words.length,
     sentenceCount: sentences.length,
@@ -104,13 +103,13 @@ export function truncateText(text: string, maxWords: number): string {
   if (words.length <= maxWords) {
     return text;
   }
-
+  
   return words.slice(0, maxWords).join(' ') + '...';
 }
 
 export function detectLanguage(text: string): string {
   const sample = text.slice(0, 1000).toLowerCase();
-
+  
   if (/\b(the|and|or|but|in|on|at|to|for|of|with|by)\b/.test(sample)) {
     return 'en';
   } else if (/\b(le|la|les|de|du|des|et|ou|mais|dans|sur|à|pour|avec|par)\b/.test(sample)) {
@@ -118,6 +117,6 @@ export function detectLanguage(text: string): string {
   } else if (/\b(der|die|das|und|oder|aber|in|auf|an|zu|für|von|mit|durch)\b/.test(sample)) {
     return 'de';
   }
-
+  
   return 'unknown';
 }

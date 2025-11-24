@@ -1,4 +1,4 @@
-import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold, Part } from '@google/generative-ai';
+import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from '@google/generative-ai';
 
 if (!process.env.GEMINI_API_KEY) {
   console.warn('GEMINI_API_KEY is not configured');
@@ -24,29 +24,6 @@ export interface GeminiImageResponse {
   warnings?: string[];
 }
 
-interface GeminiPart {
-  inlineData?: {
-    data: string;
-    mimeType?: string;
-  };
-  text?: string;
-}
-
-interface SafetyRating {
-  category: string;
-  probability: string;
-}
-
-interface GeminiResponse {
-  candidates?: {
-    content?: {
-      parts?: GeminiPart[];
-    };
-  }[];
-  promptFeedback?: {
-    safetyRatings?: SafetyRating[];
-  };
-}
 
 export async function generateImage(request: GeminiImageRequest): Promise<GeminiImageResponse> {
   if (!genAI) {
@@ -55,7 +32,7 @@ export async function generateImage(request: GeminiImageRequest): Promise<Gemini
 
   try {
     const model = genAI.getGenerativeModel({
-      model: 'gemini-2.0-flash',
+      model: 'gemini-3.0-pro',
       safetySettings: [
         {
           category: HarmCategory.HARM_CATEGORY_HARASSMENT,
@@ -74,10 +51,6 @@ export async function generateImage(request: GeminiImageRequest): Promise<Gemini
           threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
         },
       ],
-      generationConfig: {
-        maxOutputTokens: 1290,
-        temperature: 0.7,
-      },
     });
 
     let fullPrompt = request.prompt;
@@ -88,7 +61,7 @@ export async function generateImage(request: GeminiImageRequest): Promise<Gemini
     fullPrompt += '\n\nSAFETY: Child-friendly, appropriate for ages 3-12, no scary or inappropriate content';
     fullPrompt += '\n\nPlease include SynthID watermark for AI content identification';
 
-    const parts: Part[] = [{ text: fullPrompt }];
+    const parts: any[] = [{ text: fullPrompt }];
 
     if (request.referenceImage) {
       parts.push({
@@ -114,16 +87,16 @@ export async function generateImage(request: GeminiImageRequest): Promise<Gemini
       imageUrl,
       prompt: fullPrompt,
       metadata: {
-        model: 'gemini-2.0-flash',
+        model: 'gemini-3.0-pro',
         timestamp: Date.now(),
         tokensUsed: 1290,
       },
       warnings: extractSafetyWarnings(response),
     };
 
-  } catch (error) {
+  } catch (error: any) {
     console.error('Gemini image generation error:', error);
-    throw new Error(`Failed to generate image: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    throw new Error(`Failed to generate image: ${error.message}`);
   }
 }
 
@@ -137,7 +110,7 @@ export async function editImage(
   }
 
   try {
-    const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
+    const model = genAI.getGenerativeModel({ model: 'gemini-3.0-pro' });
 
     const imageData = await urlToBase64(baseImageUrl);
 
@@ -146,7 +119,7 @@ export async function editImage(
       fullPrompt += '\n\nPreserve the original art style, color palette, and composition';
     }
 
-    const parts = [
+    const parts: any[] = [
       { text: fullPrompt },
       {
         inlineData: {
@@ -160,30 +133,25 @@ export async function editImage(
     const response = await result.response;
 
     const editedImageData = response.candidates?.[0]?.content?.parts?.[0];
-
-    if (!editedImageData) {
-      throw new Error('No image generated in response');
-    }
-
     const editedImageUrl = convertImageDataToUrl(editedImageData);
 
     return {
       imageUrl: editedImageUrl,
       prompt: fullPrompt,
       metadata: {
-        model: 'gemini-2.0-flash',
+        model: 'gemini-3.0-pro',
         timestamp: Date.now(),
         tokensUsed: 1290,
       },
     };
 
-  } catch (error) {
+  } catch (error: any) {
     console.error('Gemini image edit error:', error);
-    throw new Error(`Failed to edit image: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    throw new Error(`Failed to edit image: ${error.message}`);
   }
 }
 
-function convertImageDataToUrl(imageData: Part): string {
+function convertImageDataToUrl(imageData: any): string {
   if (imageData.inlineData?.data) {
     return `data:image/jpeg;base64,${imageData.inlineData.data}`;
   }
@@ -193,11 +161,11 @@ function convertImageDataToUrl(imageData: Part): string {
   return `data:image/jpeg;base64,${Buffer.from('placeholder').toString('base64')}`;
 }
 
-function extractSafetyWarnings(response: GeminiResponse): string[] {
+function extractSafetyWarnings(response: any): string[] {
   const warnings: string[] = [];
 
   if (response.promptFeedback?.safetyRatings) {
-    response.promptFeedback.safetyRatings.forEach((rating) => {
+    response.promptFeedback.safetyRatings.forEach((rating: any) => {
       if (rating.probability !== 'NEGLIGIBLE') {
         warnings.push(`Safety concern: ${rating.category}`);
       }
