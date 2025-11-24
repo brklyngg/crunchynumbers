@@ -124,60 +124,58 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50">
-      <div className="max-w-5xl mx-auto px-4 py-12 md:py-20">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50">
+      <div className="max-w-5xl mx-auto px-4 py-8 md:py-12">
 
         {/* Hero Section */}
-        <div className="text-center mb-12 md:mb-16 space-y-6">
-          <div className="inline-flex items-center justify-center p-3 bg-white rounded-2xl shadow-sm mb-4">
-            <BookOpen className="h-8 w-8 text-primary mr-2" />
-            <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-green-600">
+        <div className="text-center mb-8 md:mb-12 space-y-4">
+          <div className="inline-flex items-center justify-center p-3 bg-white rounded-2xl shadow-sm mb-2">
+            <BookOpen className="h-7 w-7 text-primary mr-2" />
+            <span className="text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600">
               Storybook Generator
             </span>
           </div>
 
-          <h1 className="text-5xl md:text-7xl font-bold text-gray-900 tracking-tight leading-tight">
-            Transform Tales for <br />
-            <span className="text-primary">Your Child</span>
+          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 tracking-tight">
+            Create Magic for <span className="text-primary">Your Child</span>
           </h1>
 
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto font-light">
-            Transform any idea or classic tale into a beautifully illustrated picture book in seconds.
+          <p className="text-lg text-gray-600 max-w-xl mx-auto">
+            Turn any story into a beautifully illustrated picture book
           </p>
         </div>
 
         {/* Main Search Interface */}
-        <div className="max-w-3xl mx-auto relative z-10 mb-12">
-          <div className="relative group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-primary to-green-600 rounded-full opacity-20 group-hover:opacity-30 blur transition duration-200" />
+        <div className="max-w-3xl mx-auto relative z-10 mb-8">
+          <div className="relative">
             <form
               onSubmit={handleStorySearch}
-              className="relative flex items-center bg-white rounded-full shadow-lg border border-gray-100 p-2 transition-all focus-within:ring-4 focus-within:ring-green-100 focus-within:border-primary/50"
+              className="relative flex items-center bg-white rounded-2xl shadow-xl border-2 border-purple-100 p-2 transition-all focus-within:border-primary focus-within:shadow-2xl"
             >
-              <Search className="h-6 w-6 text-gray-400 ml-4 flex-shrink-0" />
+              <Search className="h-5 w-5 text-gray-400 ml-4 flex-shrink-0" />
               <Input
                 id="story-search"
-                className="flex-1 border-none shadow-none focus-visible:ring-0 text-lg h-14 bg-transparent placeholder:text-gray-400"
-                placeholder="What story do you want to tell? (e.g. The Tortoise and the Hare)"
+                className="flex-1 border-none shadow-none focus-visible:ring-0 text-base h-12 bg-transparent placeholder:text-gray-400"
+                placeholder="Search for a story (e.g., The Time Machine, Peter Pan)"
                 value={storyTitle}
                 onChange={(e) => setStoryTitle(e.target.value)}
                 autoComplete="off"
               />
               <Button
                 type="submit"
-                disabled={isSearching}
+                disabled={isSearching || !storyTitle.trim()}
                 size="lg"
-                className="rounded-full px-8 h-12 text-base font-medium shadow-md hover:shadow-lg transition-all relative z-10"
+                className="rounded-xl px-6 h-10 text-sm font-medium"
               >
                 {isSearching ? (
                   <>
-                    <Sparkles className="h-4 w-4 mr-2 animate-spin" />
-                    Finding...
+                    <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                    Searching...
                   </>
                 ) : (
                   <>
+                    <Sparkles className="h-4 w-4 mr-2" />
                     Find Story
-                    <Sparkles className="h-4 w-4 ml-2" />
                   </>
                 )}
               </Button>
@@ -195,36 +193,34 @@ export default function HomePage() {
           )}
 
           {textInput && !showManualInput && (
-            <div className="mt-4 p-4 bg-green-50/80 backdrop-blur-sm border border-green-200 rounded-xl flex items-center justify-center text-green-800 animate-in fade-in slide-in-from-top-2">
-              <Sparkles className="h-5 w-5 mr-2 text-green-600" />
+            <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-xl flex items-center gap-2 text-green-800 text-sm">
+              <Sparkles className="h-4 w-4 text-green-600 flex-shrink-0" />
               <span className="font-medium">Story loaded!</span>
-              <span className="mx-2">•</span>
-              <span className="opacity-80">{textInput.length} characters ready to adapt.</span>
+              <span className="text-green-600">•</span>
+              <span className="text-green-700">{textInput.length} characters ready</span>
             </div>
           )}
 
           {copyrightWarning && (
-            <div className="mt-4 p-4 bg-yellow-50/80 backdrop-blur-sm border border-yellow-200 rounded-xl flex items-start gap-3 text-yellow-800 animate-in fade-in slide-in-from-top-2">
-              <AlertTriangle className="h-5 w-5 mt-0.5 flex-shrink-0 text-yellow-600" />
-              <div className="text-sm">
-                <strong>Copyright Notice:</strong> {copyrightWarning}
-              </div>
+            <div className="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded-xl flex items-start gap-2 text-yellow-800 text-sm">
+              <AlertTriangle className="h-4 w-4 mt-0.5 flex-shrink-0 text-yellow-600" />
+              <span>{copyrightWarning}</span>
             </div>
           )}
         </div>
 
         {/* Configuration Section */}
-        <div className="grid md:grid-cols-12 gap-8 items-start">
+        <div className="grid md:grid-cols-12 gap-6 items-start">
           {/* Settings Column */}
-          <div className="md:col-span-8 space-y-6">
-            <Card className="border-none shadow-xl bg-white/80 backdrop-blur-sm">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-xl">
+          <div className="md:col-span-8 space-y-4">
+            <Card className="border border-purple-100 shadow-lg bg-white">
+              <CardHeader className="pb-4">
+                <CardTitle className="flex items-center gap-2 text-lg">
                   <Sparkles className="h-5 w-5 text-primary" />
-                  Customize Your Book
+                  Book Settings
                 </CardTitle>
-                <CardDescription>
-                  Tailor the experience for your young reader
+                <CardDescription className="text-sm">
+                  Customize the style and content for your reader
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -240,24 +236,22 @@ export default function HomePage() {
             <div className="text-center">
               <button
                 onClick={() => setShowManualInput(!showManualInput)}
-                className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-primary transition-colors py-2"
+                className="inline-flex items-center gap-1 text-xs text-gray-500 hover:text-primary transition-colors py-2"
               >
-                {showManualInput ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
-                Advanced: Upload file or paste text manually
+                {showManualInput ? <ChevronUp className="h-3 w-3" /> : <ChevronDown className="h-3 w-3" />}
+                Or upload a file / paste text
               </button>
 
               {showManualInput && (
-                <Card className="mt-4 border-dashed border-2 bg-transparent shadow-none animate-in fade-in slide-in-from-top-2">
-                  <CardContent className="pt-6 space-y-6">
-                    <div className="grid md:grid-cols-2 gap-6">
+                <Card className="mt-3 border-dashed border-2 border-gray-200 bg-gray-50/50 shadow-none">
+                  <CardContent className="pt-4 pb-4">
+                    <div className="grid md:grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <Label htmlFor="file-upload" className="text-left block">Upload File (PDF/EPUB/TXT)</Label>
+                        <Label htmlFor="file-upload" className="text-left block text-xs font-medium text-gray-600">Upload File</Label>
                         <div className="flex items-center justify-center w-full">
-                          <label htmlFor="file-upload" className="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 transition-colors">
-                            <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                              <Upload className="w-8 h-8 mb-3 text-gray-400" />
-                              <p className="text-sm text-gray-500"><span className="font-semibold">Click to upload</span></p>
-                            </div>
+                          <label htmlFor="file-upload" className="flex flex-col items-center justify-center w-full h-24 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-white hover:bg-gray-50 transition-colors">
+                            <Upload className="w-6 h-6 mb-1 text-gray-400" />
+                            <p className="text-xs text-gray-500">PDF, EPUB, or TXT</p>
                             <Input
                               id="file-upload"
                               type="file"
@@ -267,17 +261,17 @@ export default function HomePage() {
                             />
                           </label>
                         </div>
-                        {file && <p className="text-sm text-green-600 font-medium text-left">Selected: {file.name}</p>}
+                        {file && <p className="text-xs text-green-600 font-medium text-left">✓ {file.name}</p>}
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="text-input" className="text-left block">Paste Text Directly</Label>
+                        <Label htmlFor="text-input" className="text-left block text-xs font-medium text-gray-600">Paste Text</Label>
                         <Textarea
                           id="text-input"
-                          placeholder="Paste your story text here..."
+                          placeholder="Paste story text..."
                           value={textInput}
                           onChange={(e) => setTextInput(e.target.value)}
-                          className="h-32 resize-none"
+                          className="h-24 resize-none text-sm"
                         />
                       </div>
                     </div>
@@ -288,48 +282,50 @@ export default function HomePage() {
           </div>
 
           {/* Sidebar / CTA Column */}
-          <div className="md:col-span-4 space-y-6">
-            <Card className="bg-gradient-to-br from-primary to-green-700 text-white border-none shadow-xl overflow-hidden relative">
-              <div className="absolute top-0 right-0 -mr-8 -mt-8 w-32 h-32 bg-white/10 rounded-full blur-2xl" />
-              <div className="absolute bottom-0 left-0 -ml-8 -mb-8 w-32 h-32 bg-white/10 rounded-full blur-2xl" />
+          <div className="md:col-span-4 space-y-4">
+            <Card className="bg-gradient-to-br from-primary to-purple-700 text-white border-none shadow-xl overflow-hidden relative">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-3xl -mr-16 -mt-16" />
+              <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full blur-2xl -ml-12 -mb-12" />
 
-              <CardHeader>
-                <CardTitle className="text-white">Ready to Create?</CardTitle>
-                <CardDescription className="text-green-100">
-                  Turn your settings into a full picture book.
+              <CardHeader className="pb-3 relative z-10">
+                <CardTitle className="text-white text-lg">Ready to Create?</CardTitle>
+                <CardDescription className="text-purple-100 text-sm">
+                  {textInput ? 'Your story is ready!' : 'Search or upload a story first'}
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="space-y-2 text-sm text-green-100">
-                  <div className="flex justify-between">
-                    <span>Story Source</span>
-                    <span className="font-medium text-white">{textInput ? 'Ready' : 'Waiting...'}</span>
+              <CardContent className="space-y-4 relative z-10">
+                {textInput && (
+                  <div className="space-y-1.5 text-xs text-purple-100 bg-white/10 rounded-lg p-3">
+                    <div className="flex justify-between">
+                      <span>Story</span>
+                      <span className="font-medium text-white">✓ Loaded</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Pages</span>
+                      <span className="font-medium text-white">{settings.desiredPageCount}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Age Group</span>
+                      <span className="font-medium text-white">{settings.targetAge}</span>
+                    </div>
                   </div>
-                  <div className="flex justify-between">
-                    <span>Pages</span>
-                    <span className="font-medium text-white">{settings.desiredPageCount}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Style</span>
-                    <span className="font-medium text-white truncate max-w-[120px]">{settings.aestheticStyle}</span>
-                  </div>
-                </div>
+                )}
 
                 <Button
                   onClick={handleSubmit}
                   disabled={isProcessing || (!textInput.trim() && !file)}
                   size="lg"
-                  className="w-full bg-white text-primary hover:bg-gray-50 font-bold shadow-lg text-lg h-14"
+                  className="w-full bg-white text-primary hover:bg-gray-50 font-semibold shadow-lg text-base h-12 disabled:opacity-50"
                 >
                   {isProcessing ? (
                     <>
-                      <Loader2 className="h-5 w-5 mr-2 animate-spin" />
+                      <Loader2 className="h-4 w-4 mr-2 animate-spin" />
                       Creating...
                     </>
                   ) : (
                     <>
+                      <Sparkles className="h-4 w-4 mr-2" />
                       Create Book
-                      <Sparkles className="h-5 w-5 ml-2" />
                     </>
                   )}
                 </Button>
@@ -337,24 +333,27 @@ export default function HomePage() {
             </Card>
 
             {/* Example Card */}
-            <Card className="bg-white/50 backdrop-blur-sm border-none shadow-lg">
-              <CardHeader>
-                <CardTitle className="text-base">Inspiration</CardTitle>
+            <Card className="bg-white border border-purple-100 shadow-md">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-sm font-semibold text-gray-700">Try These Stories</CardTitle>
               </CardHeader>
-              <CardContent className="text-sm text-gray-600 space-y-3">
-                <p>Try searching for:</p>
+              <CardContent className="text-xs text-gray-600">
                 <ul className="space-y-2">
-                  <li className="flex items-center gap-2 cursor-pointer hover:text-primary transition-colors" onClick={() => { setStoryTitle("The Velveteen Rabbit"); handleStorySearch(); }}>
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary/50" />
+                  <li className="flex items-center gap-2 cursor-pointer hover:text-primary transition-colors py-1" onClick={() => { setStoryTitle("The Velveteen Rabbit"); handleStorySearch(); }}>
+                    <span className="w-1 h-1 rounded-full bg-primary/50" />
                     The Velveteen Rabbit
                   </li>
-                  <li className="flex items-center gap-2 cursor-pointer hover:text-primary transition-colors" onClick={() => { setStoryTitle("Alice in Wonderland"); handleStorySearch(); }}>
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary/50" />
+                  <li className="flex items-center gap-2 cursor-pointer hover:text-primary transition-colors py-1" onClick={() => { setStoryTitle("Alice in Wonderland"); handleStorySearch(); }}>
+                    <span className="w-1 h-1 rounded-full bg-primary/50" />
                     Alice in Wonderland
                   </li>
-                  <li className="flex items-center gap-2 cursor-pointer hover:text-primary transition-colors" onClick={() => { setStoryTitle("Peter Pan"); handleStorySearch(); }}>
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary/50" />
+                  <li className="flex items-center gap-2 cursor-pointer hover:text-primary transition-colors py-1" onClick={() => { setStoryTitle("Peter Pan"); handleStorySearch(); }}>
+                    <span className="w-1 h-1 rounded-full bg-primary/50" />
                     Peter Pan
+                  </li>
+                  <li className="flex items-center gap-2 cursor-pointer hover:text-primary transition-colors py-1" onClick={() => { setStoryTitle("The Time Machine"); handleStorySearch(); }}>
+                    <span className="w-1 h-1 rounded-full bg-primary/50" />
+                    The Time Machine
                   </li>
                 </ul>
               </CardContent>
